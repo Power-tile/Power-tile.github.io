@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <pre>
+<code>const int R = 3;
+const int G = 5;
+const int B = 6;
+const int REDS = 2;
+const int BEEP = 4;
+const int BB = 9;
+
+const int TIME[5] = {3000, 6000, 10000, 13000, 18000};
+
+bool dead = false;
+int i = 0;
+
+void green() {
+  analogWrite(R, 0);
+  analogWrite(G, 125);
+  analogWrite(B, 0);
+}
+
+void rgb1_close() {
+  analogWrite(R, 0);
+  analogWrite(G, 0);
+  analogWrite(B, 0);
+}
+
+void red() {
+  analogWrite(R, 125);
+  analogWrite(G, 0);
+  analogWrite(B, 0);
+}
+
+void reds_up() {
+  digitalWrite(REDS, LOW);
+}
+
+void reds_down() {
+  digitalWrite(REDS, HIGH);
+}
+
+void setup() {
+  pinMode(R, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(REDS, OUTPUT);
+  pinMode(BEEP, OUTPUT);
+  pinMode(BB, OUTPUT);
+}
+
+void loop() {
+  reds_down();
+  if (millis() > TIME[4]) {
+    digitalWrite(BEEP, HIGH);
+    analogWrite(R, 255);
+    delay(300);
+    analogWrite(R, 0);
+    digitalWrite(BEEP, LOW);
+    analogWrite(BB, 255);
+    delay(300);
+    analogWrite(BB, 0);
+  } else if (millis() > TIME[3]) {
+    if (!dead) {
+      reds_up();
+      delay(300);
+      reds_down();
+      dead = true;
+    }
+  } else if (millis() > TIME[2]) {
+    red();
+  } else if (millis() > TIME[1]) {
+    green();
+    delay(500);
+    rgb1_close();
+    delay(500);
+  } else {
+    green();
+  }
+}</code>
+        </pre>
+    </body>
+</html>

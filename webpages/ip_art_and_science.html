@@ -20,8 +20,8 @@
 
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
     <style>
         body {
             background-color: rgb(228, 228, 228);
@@ -30,7 +30,7 @@
 
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="icon" type="image/png" href="../asset/images/favicon.png">
 
 </head>
 
@@ -52,6 +52,9 @@
                     <h1>IP: Art & Science</h1>
                 </div>
             </div>
+
+            <!-- LINUX CRASH -->
+
             <div class="row">
                 <div class="twelve columns">
                     <h2>Linux Crash: 20190920</h2>
@@ -63,100 +66,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="six columns">
-                    <!-- <video controls="controls">
-                        <source src="/videos/projects/linux_crash.mp4" type="video/mp4">
-                    </video> -->
-                    <!-- <p>This is the left column</p> -->
-                    <!--
-                        <iframe src="https://player.bilibili.com/player.html?aid=45964854&cid=80494029&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-                    -->
+                <div class="twelve columns">
+                    <video controls="controls">
+                        <source src="../asset/videos/projects/linux_crash.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <iframe class="twelve columns" height="500" src="../asset/code/linux_crash.html">
+                    <!-- <p>This is the right column</p> -->
+
+                </iframe>
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <h2>Chemistry: 20190925</h2>
                     <p>
-                        
+                        Our project is to express a piece of memory with light (and sound). We use Ardunio, Linux
+                        Penguins, and RGB LEDs to interpret the bad memory of Linux Penguins. In fact, many of them were
+                        destroyed by some evil force last semester.
                     </p>
                 </div>
-                <div class="six columns">
-                    <!-- <p>This is the right column</p> -->
-                    <pre>
-                        <code>
-const int R = 3;
-const int G = 5;
-const int B = 6;
-const int REDS = 2;
-const int BEEP = 4;
-const int BB = 9;
+            </div>
 
-const int TIME[5] = {3000, 6000, 10000, 13000, 18000};
-
-bool dead = false;
-int i = 0;
-
-void green() {
-    analogWrite(R, 0);
-    analogWrite(G, 125);
-    analogWrite(B, 0);
-}
-
-void rgb1_close() {
-    analogWrite(R, 0);
-    analogWrite(G, 0);
-    analogWrite(B, 0);
-}
-
-void red() {
-    analogWrite(R, 125);
-    analogWrite(G, 0);
-    analogWrite(B, 0);
-}
-
-void reds_up() {
-    digitalWrite(REDS, LOW);
-}
-
-void reds_down() {
-    digitalWrite(REDS, HIGH);
-}
-
-void setup() {
-    pinMode(R, OUTPUT);
-    pinMode(G, OUTPUT);
-    pinMode(B, OUTPUT);
-    pinMode(REDS, OUTPUT);
-    pinMode(BEEP, OUTPUT);
-    pinMode(BB, OUTPUT);
-}
-
-void loop() {
-    reds_down();
-    if (millis() > TIME[4]) {
-        digitalWrite(BEEP, HIGH);
-        analogWrite(R, 255);
-        delay(300);
-        analogWrite(R, 0);
-        digitalWrite(BEEP, LOW);
-        analogWrite(BB, 255);
-        delay(300);
-        analogWrite(BB, 0);
-    } else if (millis() > TIME[3]) {
-        if (!dead) {
-            reds_up();
-            delay(300);
-            reds_down();
-            dead = true;
-        }
-    } else if (millis() > TIME[2]) {
-        red();
-    } else if (millis() > TIME[1]) {
-        green();
-        delay(500);
-        rgb1_close();
-        delay(500);
-    } else {
-        green();
-    }
-}
-                        </code>
-                    </pre>
+            <div class="row">
+                <div class="twelve columns">
+                    <h2>Time-Based Project: Light</h2>
+                    <h3>1. Thoughts Towards Driving Questions</h3>
+                    <p>
+                        Due to the limits of time and money, we came up with several driving questions, with their content and technical difficulties shown below.
+                        <table>
+                            <thead>
+                                <td>Question Content</td>
+                                <td>Technical Difficulties</td>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>How to construct a pure optical logic gate?</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>>
                 </div>
             </div>
         </div>
