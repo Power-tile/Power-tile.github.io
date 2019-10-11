@@ -176,7 +176,7 @@ foreach ($i in $list) {
         <p>程序：</p>
 <code><pre>$list = ls -include *.jpg -r
 foreach ($i in $list) {
-    $name = $i.fullname -replace $i.extension,".mp4"
+    $name = $i.name -replace $i.extension,".mp4"
     ffmpeg -loop 1 -t 1 -r 10 -i $i $name -y
 }
 
@@ -197,12 +197,7 @@ file hi.mp4
         <p>这个.txt文件可以被ffmpeg读取，并将这些.txt文件中指明的.mp4文件合并为一个大的.mp4文件。如果我们将上面的.txt文件命名为<code>filelist.txt</code>，ffmpeg的合并命令为：</p>
         <p><code>ffmpeg -f concat -i filelist.txt -c copy _____.mp4</code></p>
         <p>最后一个空应填写合并后的视频文件名。</p>
-        <p>但是在向filelist.txt中写入文件之前，我们需要提一下微软的蛋疼设计：所有.txt文件的开头都有一个叫做BOM头的东西，而这个东西无法被ffmpeg读取。</p>
-        <p>因此，我们需要在运行脚本，写入filelist.txt具体内容之前就创建好filelist.txt，并且在创建之后右键这个文件，选择用notepad++打开，如图：</p>
-        <img src="../asset/images/powershell_txt_encode.png">
-        <p>然后在notepad++中选择Encoding > Convert to UTF-8</p>
-        <img src="../asset/images/powershell_notepad_encode.png">
-        <p>这样，filelist.txt中的BOM头就没有了。</p>
+        <p>但是在向filelist.txt中写入文件之前，我们需要提一下微软的蛋疼设计：所有.txt文件的开头都有一个叫做BOM头的东西，而这个东西无法被ffmpeg读取。于是，我们最后要把.txt文件转换成不带BOM的形式。</p>
 
         <p>实现的具体思路：将filelist.txt中原有的内容清空（因为这个脚本可能以前运行过，filelist.txt中可能残留有上一次的内容） -> 查找当前目录下所有.mp4的视频文件 -> 对于每一个文件，将其名字
             按格式添加进filelist.txt -> 合并所有的视频文件
@@ -211,14 +206,18 @@ file hi.mp4
 <code><pre>Set-Content filelist.txt -value $null
 $list = ls -include *.mp4 -r
 foreach ($i in $list) {
-    $name = "file " + $i.fullname
+    $name = "file " + $i.name
     echo $name >> filelist.txt
 }
+$txt = ls -include filelist.txt -r
+$content = cat $txt
+$format = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllLines($txt, $content, $format)
 ffmpeg -f concat -i filelist.txt -c copy output.mp4
 </pre></code>
         <p>其中，第一行表示将filelist.txt的内容设为<code>$null</code>（powershell自带的变量，代表空值）；第二行查找所有的mp4文件；第三行到第六行对所有查找到的文件依次进行操作；
         第四行中我们用<code>$name</code>变量保存将要被放进filelist.txt中的内容（格式为<code>"file "</code>+文件名称，注意这里file后面有空格；
-        第五行利用<code>echo</code>命令将上一行计算好的<code>$name</code>放入filelist.txt；最后一行执行合并视频的操作。</p>
+        第五行利用<code>echo</code>命令将上一行计算好的<code>$name</code>放入filelist.txt；第七行到第10行为转换filelist.txt格式；最后一行执行合并视频的操作。</p>
         
         <h3>为一个视频添加音频伴奏</h3>
         <p><code>ffmpeg -i ____.mp4 -i ____.mp3 -vcodec copy -acodec copy ____.mp4</code></p>
