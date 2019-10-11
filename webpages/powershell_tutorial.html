@@ -179,7 +179,6 @@ foreach ($i in $list) {
     $name = $i.name -replace $i.extension,".mp4"
     ffmpeg -loop 1 -t 1 -r 10 -i $i $name -y
 }
-
 </pre></code>
         <p>第一行为读取当前目录下的所有.jpg文件并保存至变量<code>$list</code>；第二行至第五行为循环所有得到的文件，循环中<code>$i</code>表示当前循环到的照片；
             其中，第三行运用了一个小技巧，将当前照片名称中的后缀名".jpg"用<code>-replace</code>替换为了".mp4"，从而得到生成出的视频应该有的名称，并将这个结果保存在变量<code>$name</code>中；
@@ -222,6 +221,28 @@ ffmpeg -f concat -i filelist.txt -c copy output.mp4
         <h3>为一个视频添加音频伴奏</h3>
         <p><code>ffmpeg -i ____.mp4 -i ____.mp3 -vcodec copy -acodec copy ____.mp4</code></p>
         <p>其中，第一个空填视频名称，表示原始视频名称；第二个空填音频名称；最后一个空填输出后的视频名称。注意，前后两个视频名称不要相同。</p>
+
+        <h3>对子路径下的文件进行操作</h3>
+        <p>前面我们说的几个操作都有一个大前提：所有操作的图片/视频都在一个目录下。如果不在一个目录下，我们需要给<code>ffmpeg</code>更多信息，及不止要给出文件的名称，还要给出具体的文件目录。</p>
+        <p>以<em>应用：为一个目录下所有的.jpg照片创建1秒长的mp4视频，创建的视频名称与原图片名称相同</em>为例：</p>
+<code><pre>$list = ls -include *.jpg -r
+foreach ($i in $list) {
+    $name = <em>$i.fullname</em> -replace $i.extension,".mp4"
+    ffmpeg -loop 1 -t 1 -r 10 -i $i $name -y
+}
+</pre></code>
+        <p>值得注意的是，我们这里将<code>$i.name</code>改为了<code>$i.fullname</code>，从而使其包含路径信息。但是，如果你试着运行上面的代码，<code>ffmpeg</code>会报错：</p>
+        <code>Unsafe file name 'C:UsersPower_tileDesktopPics1.mp4<br>filelist.txt: Operation not permitted</code>
+        <p>我们发现路径中原本应该有"\"（反斜杠）的地方都没有反斜杠了（原本路径为<code>C:\Users\Power_tile\Desktop\Pics\1.mp4</code>）。这是因为反斜杠在powershell中还被用来表示一些特殊字符，
+        例如<code>\n</code>表示换行，<code>\b</code>表示Backspace，等等。因此，在powershell中，我们用两个连在一起的反斜杠表示一个反斜杠字符，即用<code>"\\"</code>表示反斜杠。因此，
+        我们需要用<code>-replace命令将name中所有的反斜杠换为双反斜杠，代码如下：</code></p>
+<code><pre>$list = ls -include *.jpg -r
+foreach ($i in $list) {
+    $name = <em>$i.fullname</em> -replace "\\","\\" -replace $i.extension,".mp4"
+    ffmpeg -loop 1 -t 1 -r 10 -i $i $name -y
+}
+</pre></code>
+        <p>这种用反斜杠表示特殊字符的方法，成为转义。</p>
 
         <h2>5. Pre-Milestone II</h2>
         <p>思路：找到当前目录中所有的图片(<code>ls</code>) -> 对于每一个图片循环(<code>foreach</code>) -> 先确定这张照片应该被放到哪一个文件夹(<code>$i.creationTime.year</code>) ->
