@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <pre><code>int speakerPin = 9;
+
+/*************************/
+
+const char LENGTH = 80;
+char notes[] = "daaga gaCafg fefefg dffde fedced c7 cd daaga gaCafg fefefg agdffde fedced c6c7 "; // a space represents a rest
+int beats[] = { 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 6, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 6,
+                2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 3, 1, 1, 1, 2, 6};
+int tempo = 150;
+
+/*************************/
+
+void playTone(int tone, int duration) {
+  for (long i = 0; i < duration * 1000L; i += tone * 2) {
+    digitalWrite(speakerPin, HIGH);
+    delayMicroseconds(tone);
+    digitalWrite(speakerPin, LOW);
+    delayMicroseconds(tone);
+  }
+}
+  
+void playNote(char note, int duration) {
+  char names[] = { '1', '2', '3', '4', '5', '6', '7', 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C', 'D', 'E', 'F', 'G', 'A', 'B' };
+  int tones[] = { 3816, 3401, 3030, 2865, 2551, 2272, 2024, 1912, 1703, 1517, 1432, 1275, 1136, 1012, 955, 851, 758, 751, 637, 568, 508 };
+
+  // play the tone corresponding to the note name
+  for (int i = 0; i < 21; i++) {
+    if (names[i] == note) {
+      playTone(tones[i], duration);
+    }
+  }
+}
+  
+void setup() {
+  pinMode(speakerPin, OUTPUT);
+}
+  
+void loop() {
+  for (int i = 0; i < LENGTH; i++) {
+    if (notes[i] == ' ') {
+      delay(beats[i] * tempo); // rest
+    } else {
+      playNote(notes[i], beats[i] * tempo);
+    }
+
+    // pause between notes
+    // delay(tempo / 2); 
+  }
+}</code></pre>
+    </body>
+</html>
