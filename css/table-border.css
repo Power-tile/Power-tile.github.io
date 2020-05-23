@@ -1,0 +1,17 @@
+table {
+    border-spacing: 0;
+    border-top: 1px solid #999;
+    border-left: 1px solid #999;
+}
+
+table td {
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+    padding: 5px
+}
+
+table th {
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+    padding: 5px
+}
