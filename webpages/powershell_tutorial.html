@@ -1,41 +1,15 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <!-- Basic Page Needs
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>Daniel He's Tutorial: Intro to Powershell</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Powershell Tutorial</title>
 
-    <!-- Mobile Specific Metas
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- FONT
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <!-- <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"> -->
-
-    <!-- CSS
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <style>
-        body {
-            background-color: rgb(228, 228, 228);
-            font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
-            font-size: 14px;
-        }
-        code {
-            font-style: bold;
-        }
-    </style>
-
-    <!-- Favicon
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="../asset/images/favicon.png">
-
 </head>
 
 <body>
@@ -45,21 +19,21 @@
         <p>Powershell是一款Windows系统内置的命令行应用，其支持的语言为脚本语言，比传统的cmd更为强大。</p>
         <p>有三种方法打开powershell的窗口: 1) 右击开始键，选择Windows Powershell; 2) 在开始菜单中搜索powershell; 3) 同时按下Win和R键，键入powershell并按下回车。</p>
         <h3>Powershell的窗口</h3>
-        <img src="../asset/images/powershell_window.png">
+        <img class="img-fluid" src="../asset/images/powershell_window.png">
         <p>其中，红色的框中的PS表示当前运行的是powershell，绿色框中的内容是你当前的工作路径（可以理解为你当前在的文件夹的位置），黄色框中的大于号表示你可以向powershell输入指令。</p>
         <h3>Powershell命令结构</h3>
-        <img src="../asset/images/powershell_cmd_basic.png">
+        <img class="img-fluid" src="../asset/images/powershell_cmd_basic.png">
         <p>这是一条标准的powershell指令。其中，红色框中的<code>ls</code>是powershell命令的名称；绿色框中的<code>-r</code>是该命令的选项（options, 可以理解为命令的约束条件，后面会做详细介绍）
         黄色框中的<code>C:\Users\Power_tile\</code>是传递的参数（parameters/arguments，可以理解命令执行所需要的信息）。通常情况下选项之间没有顺序区别，但有些特殊的命令规定了顺序（例如ffmpeg）</p>
         <p>当命令键入完毕后，用户可以按回车键执行命令。</p>
-        <p>任意一条正在运行的命令都可以用快捷键<code>Ctrl+C</code>强制中断。</p>
+        <p>任意一条正在运行的命令都可以用快捷键<kbd>Ctrl+C</kbd>强制中断。</p>
 
         <h2>2. Powershell基础命令</h2>
         <!--
         <h3><code>pwd</code></h3>
         <p>“工作路径(working directory)”是powershell的重要概念。我们可以将powershell假想为一个文件资源管理器的窗口，而当前的工作路径就是当前文件夹的位置。该工作路径显示在powershell的窗口中。</p>
         <p>除此之外，一个很快捷的获取当前工作路径的方法是在powershell内键入<code>pwd</code>(print working directory)并键入回车，如下图所示。</p>
-        <img src="../asset/images/powershell_pwd.png" width="600px"> -->
+        <img class="img-fluid" src="../asset/images/powershell_pwd.png" width="600px"> -->
 
         <h3><code>ls</code></h3>
         <p><code>ls</code>在不加任何选项时的作用为显示当前目录下的所有文件。同时，<code>ls</code>还有查找的功能。</p>
@@ -88,25 +62,25 @@ foreach ($i in $list) {
         <p><code>echo</code>命令的主要用途为在powershell窗口中打印一个东西，格式为<code>echo _______</code>。例如，要在屏幕上打印<code>hi</code>，可以在powershell内键入：</p>
         <p><code>echo hi</code></p>
         <p>值得一提的是：<code>echo</code>后面可以跟不止一个内容，每个内容间用空格隔开，但是输出是会分行输出，即：</p>
-        <code>echo hello world</code>
+        <p><code>echo hello world</code></p>
         <p>的输出效果为</p>
-        <p><code>hello</code><br><code>world</code></p>
+        <p><samp>hello</samp><br><samp>world</samp></p>
         <p>如果想要在一行内输出<code>hello world</code>，需要用双引号将这个内容括起来，表示<code>hello world</code>是一个完整的字符串，即：</p>
-        <code>echo "hello world"</code>
+        <p><code>echo "hello world"</code></p>
 
         <p><code>echo</code>的另一个重要用法为向一个文件末尾添加内容内容，格式为</p>
-        <code>echo ____ >> ____</code>
+        <p><code>echo ____ >> ____</code></p>
         <p>其中，前一个空表示要写入的内容，后一个空表示目标文件，写入时会先另起新的一行再插入内容。前一个空可以添加多个内容，每个内容之间用空格隔开，换行法则和直接<code>echo</code>的规则相同。</p>
-        <p>例如：文件test.txt的内容为：<br><code>hi</code></p>
+        <p>例如：文件test.txt的内容为：<br><samp>hi</samp></p>
         <p>如果运行<code>echo hello world >> test.txt</code>，test.txt的内容会变为：</p>
-        <p><code>hi<br>hello<br>world</code></p>
+        <p><samp>hi<br>hello<br>world</samp></p>
 
         <h3>运行脚本</h3>
         <p>简单来说，脚本就是把原来在powershell里直接输入的命令放到一个文件中。这个文件可以被重复执行，不需要每次执行时重新敲一遍代码。</p>
         <p>powershell的脚本的后缀名为<code>.ps1</code>，创建脚本可以用<code>ni</code>命令。如，需要在当前目录下创造一个脚本名为<code>test.ps1</code>，可以在powershell内键入</p>
         <p><code>ni test.ps1</code></p>
         <p>然后可以右击这个脚本，选择用visual studio code打开。</p>
-        <img src="../asset/images/powershell_open_with_vscode.png">
+        <img class="img-fluid" src="../asset/images/powershell_open_with_vscode.png">
         <p>运行这个脚本的方法为：1）将powershell的工作路径切换为脚本所在的路径（用<code>cd</code>命令）；2）在powershell内输入<code>.\____.ps1</code>
             （在上面这个例子中，应键入<code>.\test.ps1</code>）</p>
 
@@ -196,7 +170,7 @@ file hi.mp4
         <p>这个.txt文件可以被ffmpeg读取，并将这些.txt文件中指明的.mp4文件合并为一个大的.mp4文件。如果我们将上面的.txt文件命名为<code>filelist.txt</code>，ffmpeg的合并命令为：</p>
         <p><code>ffmpeg -f concat -i filelist.txt -c copy _____.mp4</code></p>
         <p>最后一个空应填写合并后的视频文件名。</p>
-        <p>但是在向filelist.txt中写入文件之前，我们需要提一下微软的蛋疼设计：所有.txt文件的开头都有一个叫做BOM头的东西，而这个东西无法被ffmpeg读取。于是，我们最后要把.txt文件转换成不带BOM的形式。</p>
+        <p>但是在向filelist.txt中写入文件之前，我们需要提一下微软的讨厌设计：所有在windows下打开的.txt文件开头都有一个叫做BOM头的前缀字符，而BOM头无法被ffmpeg读取。于是，我们需要把.txt文件转换成不带BOM的形式。</p>
 
         <p>实现的具体思路：将filelist.txt中原有的内容清空（因为这个脚本可能以前运行过，filelist.txt中可能残留有上一次的内容） -> 查找当前目录下所有.mp4的视频文件 -> 对于每一个文件，将其名字
             按格式添加进filelist.txt -> 合并所有的视频文件
@@ -212,11 +186,10 @@ $txt = ls -include filelist.txt -r
 $content = cat $txt
 $format = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllLines($txt, $content, $format)
-ffmpeg -f concat -i filelist.txt -c copy output.mp4
-</pre></code>
+ffmpeg -f concat -i filelist.txt -c copy output.mp4</pre></code>
         <p>其中，第一行表示将filelist.txt的内容设为<code>$null</code>（powershell自带的变量，代表空值）；第二行查找所有的mp4文件；第三行到第六行对所有查找到的文件依次进行操作；
         第四行中我们用<code>$name</code>变量保存将要被放进filelist.txt中的内容（格式为<code>"file "</code>+文件名称，注意这里file后面有空格；
-        第五行利用<code>echo</code>命令将上一行计算好的<code>$name</code>放入filelist.txt；第七行到第10行为转换filelist.txt格式；最后一行执行合并视频的操作。</p>
+        第五行利用<code>echo</code>命令将上一行计算好的<code>$name</code>放入filelist.txt；第七行到第十行为转换filelist.txt格式；最后一行执行合并视频的操作。</p>
         
         <h3>为一个视频添加音频伴奏</h3>
         <p><code>ffmpeg -i ____.mp4 -i ____.mp3 -vcodec copy -acodec copy ____.mp4</code></p>
@@ -232,7 +205,8 @@ foreach ($i in $list) {
 }
 </pre></code>
         <p>值得注意的是，我们这里将<code>$i.name</code>改为了<code>$i.fullname</code>，从而使其包含路径信息。但是，如果你试着运行上面的代码，<code>ffmpeg</code>会报错：</p>
-        <code>Unsafe file name 'C:UsersPower_tileDesktopPics1.mp4<br>filelist.txt: Operation not permitted</code>
+        <samp><pre>Unsafe file name 'C:UsersPower_tileDesktopPics1.mp4'
+filelist.txt: Operation not permitted</pre></samp>
         <p>我们发现路径中原本应该有"\"（反斜杠）的地方都没有反斜杠了（原本路径为<code>C:\Users\Power_tile\Desktop\Pics\1.mp4</code>）。这是因为反斜杠在powershell中还被用来表示一些特殊字符，
         例如<code>\n</code>表示换行，<code>\b</code>表示Backspace，等等。因此，在powershell中，我们用两个连在一起的反斜杠表示一个反斜杠字符，即用<code>"\\"</code>表示反斜杠。因此，
         我们需要用<code>-replace命令将name中所有的反斜杠换为双反斜杠，代码如下：</code></p>
@@ -242,7 +216,7 @@ foreach ($i in $list) {
     ffmpeg -loop 1 -t 1 -r 10 -i $i $name -y
 }
 </pre></code>
-        <p>这种用反斜杠表示特殊字符的方法，成为转义。</p>
+        <p>这种用反斜杠表示特殊字符的方法，称为转义。</p>
 
         <h2>5. Pre-Milestone II</h2>
         <p>思路：找到当前目录中所有的图片(<code>ls</code>) -> 对于每一个图片循环(<code>foreach</code>) -> 先确定这张照片应该被放到哪一个文件夹(<code>$i.creationTime.year</code>) ->

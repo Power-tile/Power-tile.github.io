@@ -4,84 +4,94 @@
         <title>Java Guide and Links</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../css/table-border.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+        <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+        <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Introduction</h1>
-        <p>This is a guide & link list for great links I encountered while learning Java.</p>
-        <h1>Actual Table</h1>
-        <table>
-            <tr>
-                <th style="color: blue">Description</th>
-                <th style="color: magenta">Links</th>
-            </tr>
-            <tr>
-                <th>Java Official Website</th>
-                <td><a href="https://www.java.com/en/">https://www.java.com/en/</a></td>
-            </tr>
-            <tr>
-                <th>Setting Environmental Variable in Windows 10 System</th>
-                <td><a href="https://www.cnblogs.com/silence9527/p/7358239.html">https://www.cnblogs.com/silence9527/p/7358239.html</a></td>
-            </tr>
-            <tr>
-                <th>Java Basics</th>
-                <td><a href="https://www.liaoxuefeng.com/wiki/1252599548343744">https://www.liaoxuefeng.com/wiki/1252599548343744</a></td>
-            </tr>
-            <tr>
-                <th>All about Spring</th>
-                <td><a href="https://my.oschina.net/u/4006362/blog/2414012">https://my.oschina.net/u/4006362/blog/2414012</a></td>
-            </tr>
-            <tr>
-                <th>Integrating Spring</th>
-                <td><a href="https://my.oschina.net/u/4006362/blog/2414012">https://my.oschina.net/u/4006362/blog/2414012</a></td><
-            </tr>
-            <tr>
-                <th>Spring with Annotation</th>
-                <td><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html">https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html</a></td>
-            </tr>
-            <tr>
-                <th><code>Lombok</code>: Automatic getter, setter, and more</th>
-                <td><a href="https://projectlombok.org/setup/maven">https://projectlombok.org/setup/maven</a></td>
-            </tr>
-            <tr>
-                <th>Adding dependency of <code>javax.annotation</code> for <code>@Resources</code> and more</th>
-                <td><a href="https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api">https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api</a>
-                    <br><em>Corresponding Dependency Information in </em><code>pom.xml</code>:
-                    <code><pre>&ltdependency>
+        <div class="container">
+            <h1>Introduction</h1>
+            <p>This is a guide & link list for great links I collected while learning Java.</p>
+            <h1>Actual Table</h1>
+            <table>
+                <tr>
+                    <th style="color: blue">Description</th>
+                    <th style="color: magenta">Links</th>
+                </tr>
+                <tr>
+                    <th>Java Official Website</th>
+                    <td><a href="https://www.java.com/en/">https://www.java.com/en/</a></td>
+                </tr>
+                <tr>
+                    <th>Setting Environmental Variable in Windows 10 System</th>
+                    <td><a href="https://www.cnblogs.com/silence9527/p/7358239.html">https://www.cnblogs.com/silence9527/p/7358239.html</a></td>
+                </tr>
+                <tr>
+                    <th>Java Basics</th>
+                    <td><a href="https://www.liaoxuefeng.com/wiki/1252599548343744">https://www.liaoxuefeng.com/wiki/1252599548343744</a></td>
+                </tr>
+                <tr>
+                    <th>All about Spring</th>
+                    <td><a href="https://my.oschina.net/u/4006362/blog/2414012">https://my.oschina.net/u/4006362/blog/2414012</a></td>
+                </tr>
+                <tr>
+                    <th>Integrating Spring</th>
+                    <td><a href="https://my.oschina.net/u/4006362/blog/2414012">https://my.oschina.net/u/4006362/blog/2414012</a></td><
+                </tr>
+                <tr>
+                    <th>Spring with Annotation</th>
+                    <td><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html">https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html</a></td>
+                </tr>
+                <tr>
+                    <th><code>Lombok</code>: Automatic getter, setter, and more</th>
+                    <td><a href="https://projectlombok.org/setup/maven">https://projectlombok.org/setup/maven</a></td>
+                </tr>
+                <tr>
+                    <th>Adding dependency of <code>javax.annotation</code> for <code>@Resources</code> and more</th>
+                    <td><a href="https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api">https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api</a>
+                        <br><em>Corresponding Dependency Information in </em><code>pom.xml</code>:
+                        <code><pre>&ltdependency>
     &ltgroupId>javax.annotation&lt/groupId>
     &ltartifactId>javax.annotation-api&lt/artifactId>
     &ltversion>1.3.1&lt/version>
 &lt/dependency></pre></code>
-                </td>
-            </tr>
-            <tr>
-                <th>More on Spring Annotation</th>
-                <td><a href="https://blog.csdn.net/u011266694/article/details/78918382">https://blog.csdn.net/u011266694/article/details/78918382</a></td>
-            </tr>
-            <tr>
-                <th>Spring AOP XML Configuration</th>
-                <td><a href="https://blog.csdn.net/u014510892/article/details/81124451">https://blog.csdn.net/u014510892/article/details/81124451</a></td>
-            </tr>
-            <tr>
-                <th>Spring AOP Guide</th>
-                <td><a href="https://how2j.cn/k/spring/spring-aop/89.html">https://how2j.cn/k/spring/spring-aop/89.html</a></td>
-            </tr>
-            <tr>
-                <th>Springboot in vscode</th>
-                <td><a href="https://code.visualstudio.com/docs/java/java-spring-boot">https://code.visualstudio.com/docs/java/java-spring-boot</a></td>
-            </tr>
-            <tr>
-                <th>Thymeleaf in Springboot</th>
-                <td><a href="https://how2j.cn/k/springboot/springboot-thymeleat/1735.html#nowhere">https://how2j.cn/k/springboot/springboot-thymeleat/1735.html#nowhere</a></td>
-            </tr>
-            <tr>
-                <th>Springboot JPA</th>
-                <td><a href="https://how2j.cn/k/springboot/springboot-jpa/1648.html">https://how2j.cn/k/springboot/springboot-jpa/1648.html</a></td>
-            </tr>
-            <tr>
-                <th>Default Functions in JPA</th>
-                <td><a href="https://www.jianshu.com/p/d41a04b367ed">https://www.jianshu.com/p/d41a04b367ed</a></td>
-            </tr>
-
-        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>More on Spring Annotation</th>
+                    <td><a href="https://blog.csdn.net/u011266694/article/details/78918382">https://blog.csdn.net/u011266694/article/details/78918382</a></td>
+                </tr>
+                <tr>
+                    <th>Spring AOP XML Configuration</th>
+                    <td><a href="https://blog.csdn.net/u014510892/article/details/81124451">https://blog.csdn.net/u014510892/article/details/81124451</a></td>
+                </tr>
+                <tr>
+                    <th>Spring AOP Guide</th>
+                    <td><a href="https://how2j.cn/k/spring/spring-aop/89.html">https://how2j.cn/k/spring/spring-aop/89.html</a></td>
+                </tr>
+                <tr>
+                    <th>Springboot in vscode</th>
+                    <td><a href="https://code.visualstudio.com/docs/java/java-spring-boot">https://code.visualstudio.com/docs/java/java-spring-boot</a></td>
+                </tr>
+                <tr>
+                    <th>Thymeleaf in Springboot</th>
+                    <td><a href="https://how2j.cn/k/springboot/springboot-thymeleat/1735.html#nowhere">https://how2j.cn/k/springboot/springboot-thymeleat/1735.html#nowhere</a></td>
+                </tr>
+                <tr>
+                    <th>Springboot JPA</th>
+                    <td><a href="https://how2j.cn/k/springboot/springboot-jpa/1648.html">https://how2j.cn/k/springboot/springboot-jpa/1648.html</a></td>
+                </tr>
+                <tr>
+                    <th>Default Functions in JPA</th>
+                    <td><a href="https://www.jianshu.com/p/d41a04b367ed">https://www.jianshu.com/p/d41a04b367ed</a></td>
+                </tr>
+                <tr>
+                    <th>Optimistic / Pessimistic Lock in Springboot</th>
+                    <td><a href="https://blog.csdn.net/qq_42914528/article/details/82148056">https://blog.csdn.net/qq_42914528/article/details/82148056</a></td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>

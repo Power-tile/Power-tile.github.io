@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <body><code><pre>// 0.1 文件目录
+// 这只是我认为比较清晰有效的文件目录，当然你可以把所有东西都放在一个文件夹内；这个文件目录会对读写文件操作中的path产生影响，这样的地方我会用 /* *** */ 标注
+// 当前目录
+//   └—— resources // 这个文件夹用于存储所有jerry给的文件
+//   |      └—— birthday-card-demo.docx
+//   |      └—— birthday-card-template.docx
+//   |      └—— msa_learners.csv
+//   └—— output // 这个文件夹用于存储输出的生日贺卡文件
+//   |      └—— Aimee Deng.docx // 我这里直接用每个learner的名字作为了文件名称，当然你也可以用学号，都行
+//   |      └—— Aimee Du.docx
+//   |      └—— Andy Song.docx
+//   |      └—— ... // 其他的生日贺卡
+//   └—— generate_birthday_card.js // 也就是你现在看到的这个js文件
+
+// 0.2 birthday-card-template.docx文件的修改 （此为加分项，可选）
+// 加分项描述：根据docxtemplater模块提供的功能，自己修改word文档的模版，以实现更个性化的生日贺卡
+// 链接：https://docxtemplater.readthedocs.io/en/latest/tag_types.html (按住ctrl/command键单击链接可以直接跳转)
+// 这里我做了一个简单判断：如果过生日时年龄大于等于16岁，就祝福"You are nearly an adult! Hope you can stay hungry in the future!"
+// 否则祝福"Still a long way to go! Rock on!"
+// 
+// 这里我没有用js的判断语句进行判断，而是用docxtemplate提供的tag功能
+// 我在birthday-card-template.docx中添加了这一行：
+// {#near_adult}{adult_birthday_wishes}{/near_adult}{^near_adult}{young_birthday_wishes}{/near_adult}
+// 它的意思是说：当near_adult为true时，替换这一行为adult_birthday_wishes，否则替换这一行为young_birthday_wishes
+// 具体设置near_adult, adult_birthday_wishes, young_birthday_wishes的步骤，详见103行
+
+// 1. 引入模块
+let PizZip = require("pizzip"); // pizzip模块
+let Docxtemplater = require("docxtemplater"); // docxtemplater模块
+let fs = require("fs"); // 文件系统模块
+// 如果你没有安装这些模块：按下ctrl+`或者command+`（就是键盘上数字1左边的那个键）打开powershell/命令行，在其中执行 npm install docxtemplater pizzip
+
+// 2. 读取birthday-card-template.docx模板
+let content = fs.readFileSync("./resources/birthday-card-template.docx" /* *** */); // 用readFileSync读取生日卡模板，并将其保存在content当中
+let zip = new PizZip(content); // 参见docxtemplate官方文档：https://docxtemplater.readthedocs.io/en/latest/generate.html (按住ctrl/command键单击链接可以直接跳转)
+let doc = new Docxtemplater(); // 参见docxtemplate官方文档
+doc.loadZip(zip); // 这句话之后这个docx文件的内容就被存在doc这个变量里面啦
+
+// 3. 读取learners基本信息
+let data = fs.readFileSync("./resources/msa_learners.csv" /* *** */, 'utf-8'); // 读取learner基本信息的表单；csv的存储格式为utf-8，如果不加上utf-8参数会需要额外的转换机制
+let rows = data.split("\n"); // 按照换行符将每一个学生分隔开
+// 这里，rows[0]（也就是表单中的第一行）存储的是每一列的含义（即""id", "stu_no", "cname", "ename", ..."；后面的 rows[1] ~ rows[rows.length-1] 存储的是每个学生的基本信息
+// 下面这一句是将每一行按照逗号拆分，并将结果保存在info数组当中
+let info = rows.map((row) => (row.substr(1, row.length-2) // 每行前后都各有一个没有用的双引号，这里用substr将双引号内的东西提取出来
+                                    .split(",") // 按照逗号进行拆分
+                                    .map((str) => (str.substr(1, str.length-2))))); // 每一项的前后也都有多余的双引号
+// 这之后，info = [
+//    ["id", "stu_no", "cname", "ename", ...],
+//    ["1", "18011001", "曹译丹", "Sabrina Cao", "Sabrina", ...]
+// ]
+let property_name = info[0]; // 将每一列的含义单独保存在一个数组当中，即此时property_name = ["id", "stu_no", "cname", "ename", ...]
+
+// 4. 设置一些有用的变量
+let grade_count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // grade_count数组用来存储每个年级有多少人，如：9年级存储于grade_count[8]，10年级存储于grade_count[9], 11年级存储于grade_count[10]
+let now = new Date(); // 获取当前时间；可以通过now.getFullYear()得到当前年份；通过now.getMonth()和now.getDay()得到月和天
+/// Date类型资料：https://www.liaoxuefeng.com/wiki/1022910821149312/1023021626575072 (按住ctrl/command键单击链接可以直接跳转)
+
+// 5. 定义构造函数
+// 这里，我们使用构造函数去简化信息收集的过程
+// 构造函数：https://www.runoob.com/js/js-objects.html (按住ctrl/command键单击链接可以直接跳转)
+let Person = function(info_arr) { // 构造函数：传进一个数组info_arr，存储当前学生的信息 // 加分点
+    for (let i = 0; i &lt; info_arr.length; i++) { // 循环当前学生的所有信息
+        this[property_name[i]] = info_arr[i]; // 当前字段的名称应为property_name[i]，内容为info_arr[i]
+        // 用大括号可以动态生成对象字段的名称 比如this["name"] = "Daniel He" 等价于 this.name = "Daniel He"
+        // 比如，当i = 0时 property_name[i]为"id"，info_arr[i]为当前学生的id
+        if (property_name[i] === "grade") { // 当前字段存储的是年级信息
+            grade_count[info_arr[i] - 1]++; // 将该年级记人数的计数器+1 // 注意！10年级对应的计数器为grade_count[9]；11年级对应的计数器为grade_count[10]
+        }
+    }
+
+    // 计算未来离现在最近的一次生日和当前的年龄
+    let birth_info = this.birthday.split("/"); // 将生日信息按斜杠拆分为月、日、年 // 注意！表格中的日期保存样式是月/日/年，如3/25/2002
+    let year = birth_info[2], month = birth_info[0], day = birth_info[1]; // 分别将年，月，日保存到变量当中
+    if (month > now.getMonth() || (month === now.getMonth() && day > now.getDay())) { // 今年过生日，判断方法见下一行
+        // 今年过生日的人，要么月份比当前月份大，要么月份和当前月份相同，但是天数比当前天天数大
+        this.age = now.getFullYear() - year; // 过生日时的年龄，所以当时的年龄应该为今年年份减去出生年份
+        let nearest_birthday_info = [now.getFullYear(), birth_info[0], birth_info[1]]; // 将今年生日的年/月/日存入数组
+        this.nearest_birthday = nearest_birthday_info.join("/"); // 将数组的每一项用join连接起来
+    } else { // 今年生日过完了，明年过生日
+        this.age = now.getFullYear() + 1 - year; // 明年过生日，所以当时的年龄应该为明年年份减去出生年份
+        let nearest_birthday_info = [now.getFullYear() + 1, month, day]; // 将明年生日的年/月/日存入数组
+        this.nearest_birthday = nearest_birthday_info.join("/"); // 将数组的每一项用join连接起来
+    }
+}
+
+// 6. 根据学生信息调用构造函数Person()生成相应的对象，并将其存入students数组
+let students = []; // 用于存储“学生”对象的数组
+for (let i = 1; i &lt; info.length; i++) { // info数组第0行为字段名称，第1行~第info.length-1行为每个学生的信息，这里只循环学生信息
+    let student = new Person(info[i]); // 将这一行的学生信息传入构造函数，并获取生成的对象
+    students.push(student); // 将生成的学生对象加入students数组
+}
+
+// 7. 循环每个学生并创建其生日卡
+for (let student of students) { // 循环students数组中的所有元素
+    let tmpdoc = doc; // 因为替换生日贺卡内容时会改变doc的值，所以在这里将doc备份一次
+    tmpdoc.setData({ // 设置替换内容：详见https://docxtemplater.readthedocs.io/en/latest/generate.html#node (按住ctrl/command键单击链接可以直接跳转)
+        // 简单来说：如果设置a: val，就会将doc里所有的{a}替换为val的值
+        ename: student.ename, // 将文档中所有的{ename}替换为学生的英文名，即student的ename字段
+        age: student.age+"th", // 将文档中所有的{age}替换为学生的年龄+th (因为是第几岁)
+        count: grade_count[student.grade-1], // 当前年级有多少个学生
+        grade: student.grade, // 学生年级
+        birthday_date: student.nearest_birthday, // 学生最近的生日
+        // 下面这一部分为加分项所需内容
+        near_adult: student.age >= 16, // 如果student.age >= 16，near_adult为true，显示adult_birthday_wishes；否则显示young_birthday_wishes
+        adult_birthday_wishes: "You are nearly an adult! Hope you can stay hungry in the future!", // 超过16岁显示的祝福
+        young_birthday_wishes: "Still a long way to go! Rock on!" // 没有超过16岁显示的祝福
+    });
+    tmpdoc.render(); // 执行替换的步骤
+    let buf = tmpdoc.getZip().generate({type: "nodebuffer"}); // 做一些转换的工作，这里不需要知道是怎么运行的
+
+    let filename = student.ename + ".docx"; // 输出文件名称
+    fs.writeFileSync(`./output/${filename}` /* *** */, buf); // 输出文件
+}</pre></code>
+    </body>
+</html>
