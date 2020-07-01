@@ -7,6 +7,12 @@
             .pl-6 {
                 padding-left: 2rem;
             }
+            .highlight {
+                background-color: rgb(249, 237, 166);
+            }
+            .hl-cyan {
+                background-color: rgb(199, 230, 234)
+            }
         </style>
 
 
@@ -15,23 +21,55 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- <script src="../js/ip-climate-handbook.js"></script> -->
+
     </head>
     <body>
-        <div class="container" id="climate-handbook">
+        <div class="container" id="climate">
             <div class="row">
-                <div class="col-3" ref="menuWrapper">
-                    <div class="position-fixed pt-2 w-100" ref="menuMinorWrapper">
-                        <table class="w-100">
-                            <tr><td class="text-wrap"><h5 class="w-100"><a href="#h2" class="text-dark">2. Community</a></h5></td></tr>
-                            <tr><td class="text-wrap"><h6 class="pl-3 w-100"><a href="#h2-1" class="text-dark">2.1 What solar energy system is most suitable to power the new MSA campus (Grid vs Battery)?</a></h6></td></tr>
-                        </table>
-                        
-                        <div class="mt-2 pl-6 text-wrap w-100"><a href="#h2-1-1" class="text-secondary">Technical Details</a></div>
-                        <div class="mt-2 pl-6 text-wrap w-100"><a href="#h2-1-2" class="text-secondary">Calculations and Logistics</a></div>
-                        <h6 class="mt-2 pl-3 text-wrap w-100"><a href="#h2-2" class="text-dark">2.2 How did we build a prototype to test our system design?</a></h6>
-                        <div class="mt-2 pl-6 text-wrap w-100"><a href="#h2-2-1" class="text-secondary">Solar Panel</a></div>
+                <div class="col-3 p-0" ref="menuWrapper" id="menu-wrapper">
+                    <div class="position-fixed pt-2" ref="menuMinorWrapper" style="left: 2px" id="menu-fixed">
+                        <div style="overflow-y: scroll" id="menu-inner-wrapper">
+                            <table class="w-100">
+                                <tr style="height: 27px"><td class="text-wrap"><h5 class="w-100 m-0"><a href="#h2" class="text-dark">2. Community</a></h5></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h2-1" class="text-dark">2.1 What solar energy system is most suitable to power the new MSA campus (Grid vs Battery)?</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-1-1" class="text-secondary">Technical Details</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-1-2" class="text-secondary">Calculations and Logistics</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h2-2" class="text-dark">2.2 How did we build a prototype to test our system design?</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-2-1" class="text-secondary">Solar Panel</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-2-2" class="text-secondary">Sensor Rig</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h2-3" class="text-dark">2.3 What are the Details of our Full System Solar Panel System Design?</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h2-4" class="text-dark">2.4 How can a campus solar system be financed?</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-4-1" class="text-secondary">标准框架</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-4-2" class="text-secondary">在项目中我们实际做了哪些？</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-4-3" class="text-secondary">在项目中我们做了哪些但没有持续呢？</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h2-5" class="text-dark">2.5 What is the positive impact of installing the system?</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-5-1" class="text-secondary">Mitigating the climate change, lessening carbon emission</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-5-2" class="text-secondary">Raising Awareness</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-5-3" class="text-secondary">Saving Money for Moonshot</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-5-4" class="text-secondary">Answering the "climate action" call from B-corp</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h2-6" class="text-dark">2.6 What other projects can help MSA to become carbon neutral?</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-6-1" class="text-secondary">What are the major areas of carbon emissions coming from MSA?</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-6-2" class="text-secondary">What is required to be carbon neutral in terms of electricity in our new campus?</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h2-6-3" class="text-secondary">Besides electricity, what other source of carbon emissions would need to be reduced significantly?</a></div></td></tr>
+
+                                <tr style="height: 27px"><td class="text-wrap"><h5 class="w-100 m-0"><a href="#h3" class="text-dark">3. Team</a></h5></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><h6 class="pl-3 w-100 m-0"><a href="#h3-1" class="text-dark">3.1 What can you learn from our project experience in working effectively</a></h6></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h3-1-1" class="text-secondary">Setting Goals</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h3-1-2" class="text-secondary">Management</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h3-1-3" class="text-secondary">Documentation and Assessment</a></div></td></tr>
+                                <tr style="height: 27px"><td class="text-wrap"><div class="pl-6 w-100 m-0"><a href="#h3-1-4" class="text-secondary">Roles</a></div></td></tr>                                
+                                
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <script>
+                    console.log(window);
+                    document.getElementById("menu-fixed").style.width = document.getElementById("menu-wrapper").offsetWidth + "px";
+                    document.getElementById("menu-fixed").style.left = document.getElementById("climate").offsetLeft - 40 + "px";
+                    document.getElementById("menu-inner-wrapper").style.height = window.innerHeight - 15 + "px";
+                </script>
 
                 <div class="col-9">
                     <!-- Text -->
@@ -192,6 +230,7 @@
 
                     <h3 id="h2-3">2.3 What are the Details of our Full System Solar Panel System Design?</h3>
                     <!-- TODO add stuff here -->
+                    <p>To be developed...</p>
 
                     <h3 id="h2-4">2.4 How can a campus solar system be financed?</h3>
                     <p><strong>Contributors: </strong>Laura, Kolento</p>
@@ -268,11 +307,50 @@
                         <li>洞察用户的痛点最后定义问题：<a href="https://shimo.im/sheets/PHKxHgGVJtK8d9Wg/Jznm8" target="_blank">https://shimo.im/sheets/PHKxHgGVJtK8d9Wg/Jznm8</a></li>
                     </ul>
                     
-                    <h3 id="h2-5">What is the positive impact of installing the system?</h3>
+                    <h3 id="h2-5">2.5 What is the positive impact of installing the system?</h3>
                     <p><strong>Contributors: </strong>Aimee, Cindy</p>
-                    <p>Link to the working document: <a href="https://shimo.im/docs/L9kBMP4RXxtjwEqK" target="_blank">https://shimo.im/docs/L9kBMP4RXxtjwEqK</a></p>
+                    <h4 id="h2-5-1">Mitigating the climate change, lessening carbon emission</h4>
+                    <p><a href="https://shimo.im/docs/XCCtKq6t8Q69yX3Y">项目计划书</a></p>
+                    <p>我们通过调研的方式，了解到现在气候变化问题的严重性，从二氧化碳排放的数据来看，近几年的温度都呈一个上升趋势，有科学家说如果我们再不进行一定程度上的改变，气候变化是一个非常大的问题。我们想要尽自己的一份力，尽可能的去改善现在的气候变化问题。因此，我们用在新校区屋顶上搭建太阳能板的方式，希望可以帮助到气候变化的问题。</p>
+                    <h4 id="h2-5-2">Raising Awareness</h4>
+                    <p>我们也在项目计划书里提到了关于全球变暖程度的部分，我们从很多的调研信息中，得到了这些结果。我们认为最好的解决方案就是让更多的人有这方面的意识，从最根本的地方解决这个问题。我们的项目经费也是通过我们自己一步一步募捐得来的，所以对于大众的影响力会非常大。我们也希望通过这种方式，从另一个层面上解决气候变化的问题。</p>
+                    <h4 id="h2-5-3">Saving Money for Moonshot</h4>
+                    <p>Accoding to the data calculation by Billy, we can save 16437 every year. After ten years, the investment would be counteracted by the eletricity costs that we will save. Look at the photo to see more details. </p>
+                    <img src="../asset/images/climate-handbook/pic2-5-1.png" class="img-fluid">
+                    <p>Graphic and simplified version of budget sheet:  </p>
+                    <img src="../asset/images/climate-handbook/pic2-5-2.png" class="img-fluid">
+                    <p>Complete version of budget sheet: <a href="https://shimo.im/sheets/r4ArzBePeVTYFgAV/SjUNT" target="_blank">https://shimo.im/sheets/r4ArzBePeVTYFgAV/SjUNT</a></p>
+                    <h4 id="h2-5-4">Answering the "climate action" call from B-corp</h4>
+                    <p><a href="https://shimo.im/docs/7Q3QyYzZp9T1FD3n" target="_blank">MSA investment social research</a></p>
+                    <ul>
+                        <li>
+                            The climate change is a chance to examine the coherence of human individuals and communities, and the abilities to take actions. B-Corp is a new kind of business that balances purpose and profit. Being certificated as a B-Crop--we are a leading community (B-Corp). By commiting ourselves to the follwing action, we further demonstrates our role as a leader:
+                            <br><ul>
+                                <li><u class="highlight">Climate Action:</u> Many B Corps around the world are leaders in responding to the climate emergency including following the steps outlined below; we urge the entire global B Corp community to:
+                                    <br><ul>
+                                        <li>Declare a Climate Emergency and Take Climate Action. <a href="https://pardot.bcorporation.net/climateemergencyplaybook" target="_blank">Use the Climate Emergency Playbook</a> for Business as a roadmap to engage their board and team with the science-based facts and the implications for their business and for society, especially for those most vulnerable.</li>
+                                        <li>Accelerate Carbon Reduction. Calculate their baseline Scope 1-3 emissions aligned to an independent internationally recognized standard and commit to accelerate their current emissions reduction trajectory using the Climate Action module of the <a href="https://bcorporation.net/news/b-lab-partners-united-nations-global-compact-develop-online-platform-sdg-focused-impact" target="_blank">SDG Action Manager</a> to meet the global goals of a 1.5°C average temperature increase. </li>
+                                        <li><span class="highlight">Develop a Net Zero Plan</span>. Offset the remaining carbon emissions to achieve net zero emissions between 2025-2050. </li>
+                                        <li><span class="highlight">Join the B Corp Climate Collective</span>. Become part of a global community of learning and practice regarding climate action, climate justice and climate advocacy.</li>
+                                    </ul>
+                                </li>
+                                <li><u class="highlight">Climate Advocacy: </u>Recognizing that voluntary action by individual businesses is insufficient to address the scale of the climate emergency, we commit to use the power of our collective voice to advocate for policy changes necessary to remove impediments and align incentives to achieve a rapid and just transition to a net zero carbon economy. We will share publicly in 2020 a policy and advocacy strategy for the global B Corp community to support meaningful climate action. </li>
+                            </ul>
+                        </li>
+                        <li>We're answering the call from MSA. Jason hopes that MSA could "mitigate the climate by achieving carbon-zeron in new campus. Specifically, a consistent and related Interdisciplinary Project Theme are expected through learners and guardians efforts." (“通过<span class="hl-cyan">学习者和教职工</span>的共同努力，维持一个稳定的、与此相关的学习者<span class="hl-cyan">跨学科项目主题</span>，作出气候行动（例如）实现新校区的<span class="hl-cyan">碳中和</span>。” )
+                            <br><ul>
+                                <li>We want to protect our home planet. It benefits learners and guardians in achieving more freedom in doing the things we want to do in future days. Specifically, the project provides us an oppotunity to do what some of us want to do. Also, it contributes to the development of our understanding of related knowledge and skills.</li>
+                                <li>It contributes to the cohrence in Moonshot community.</li>
+                            </ul>
+                        </li>
+                        <li>The previous three points further helps Marketing: more companies, more impact on education</li>
+                    </ul>
+                    <p>Finally, what are described above are raw informations. We did apply those information on authentic situations, especially in finance. Click into the links below to view more details.</p>
+                    <p><a href="https://shimo.im/docs/dOq5MZ7vG2TdFDql" target="_blank">MSA Proposal</a></p>
+                    <p><a href="https://shimo.im/docs/VOAWVamE0Es8FYkZ" target="_blank">赞助商Proposal</a></p>
+                    <p><a href="https://shimo.im/docs/XCCtKq6t8Q69yX3Y" target="_blank">项目计划书</a></p>
                     
-                    <h3 id="h2-6">What other projects can help MSA to become carbon neutral?</h3>
+                    <h3 id="h2-6">2.6 What other projects can help MSA to become carbon neutral?</h3>
                     <p><strong>Contributors: </strong>Aimee, Jonathan, Laurence</p>
                     <h4 id="h2-6-1">What are the major areas of carbon emissions coming from MSA?</h4>
                     <ul>
@@ -303,192 +381,352 @@
                     
                     <p><strong>Comparing the costs</strong></p>
                     <p>Expanding our PV solar system would be more complicated than puchasing carbon offsetting, but cheaper over time. See the table below for a price comparison.</p>
-
-
-                    
-                    
-                    <h2 id="h3"></h3>3. Team</h2>
-                    <h3 id="h3-1">What can you learn from our project experience in working effectively?</h3>
-                    <p><strong>Contributors: </strong>Jaguar (MATRIX), Laura, Cindy</p>
-                    
-                    <h4 id="h3-1-1">Setting Goals</h4>
-                    <p><strong>Contributors: </strong>Laura, Cindy</p>
-                    <a href="https://shimo.im/docs/XCCtKq6t8Q69yX3Y" target="_blank">https://shimo.im/docs/XCCtKq6t8Q69yX3Y</a>
-                    <h5 id="h3-1-1-1"><strong>How did we define objectives?</strong></h5>
-                    <p>To define the objectives of our project, first we have to look at the problem that we are going to solve in this project. so in our project, the problem we were focusing was climate change, and this has became our big objectives. based on climate change, we found the action we want to take in order to better solve this problem: build solar system on our campus roof. then, the objectives was been defined and we found the reasons of why we were going this project:</p>
-                    <img src="../asset/images/climate-handbook/pic3-1-1-1-1" class="img-fluid col-6">
-                    <h5 id="h3-1-1-2"><strong>How did we revaluate the project scope?</strong></h5>
-                    <p>We had two major Project Goal evaluation meeting</p>
-                    <p>At March 27th, we still hadn't realized the extent of impact the corona-virus quarantine would have on our project. Here are the plans that people were asked to choose from: </p>
-                    <p><strong>Realistic Options for June 15th</strong></p>
-                    <table class="w-100" border="1">
+                    <table class="w-100 table table-sm table-bordered">
                         <tr>
-                            <th>Option</th>
-                            <th>Worst case before June 15th</th>
-                            <th>Best case before June 15th</th>
-                            <th>What happens after June 15th</th>
+                            <th>Carbon Neutral Method</th>
+                            <th colspan="2">Cost</th>
                         </tr>
                         <tr>
-                            <td>A</td>
-                            <td>A prototype finished and 10% of solar panels on the roof. We have a course plan for putting solar on the roof.</td>
-                            <td>Get prototype working and install at least 250sqm  (50%) on roof, have a course plan finished a finished business case we can give to schools.</td>
-                            <td></td>
+                            <td>REC offset scheme (<a href="http://www.greenenergy.org.cn/gctrade/shop/product/listproductCategoryId.jhtml?projectType=wind&province=3&city=&companyId=&companyName=&startPrice=&endPrice=&keyword=&pageSize=5&searchProperty=&orderProperty=&orderDirection=" target="_blank">wind energy, Hebei</a>)</td>
+                            <td>0.128-0.168</td>
+                            <td>RMB/kWh</td>
                         </tr>
                         <tr>
-                            <td>B</td>
-                            <td>Get prototype working and install at least 250sqm  (50%) on roof. We have good documentation on the project, but no course plan ready to sell.</td>
-                            <td>Achieve 100% solar energy (or other ways to get carbon neutral). We have good documentation on the project, but no course plan ready to sell.</td>
-                            <td></td>
+                            <td>REC offset scheme (<a href="http://www.greenenergy.org.cn/gctrade/shop/product/content/1428.jhtml" target="_blank">solar energy, Hebei</a>)</td>
+                            <td>0.586</td>
+                            <td>RMB/kWh</td>
                         </tr>
                         <tr>
-                            <td>C</td>
-                            <td>We have some kind of solar device, either prototype or a small roof installation. We have a finished business pitch.</td>
-                            <td>We have at least covered 30% of the roof. We have a finished course plan and already some interested customers.</td>
-                            <td></td>
+                            <td>Local PV solar w/ battery (5 years use after installation)</td>
+                            <td>0.75</td>
+                            <td>RMB/kWh</td>
                         </tr>
                         <tr>
-                            <td>D</td>
-                            <td></td>
-                            <td></td>
-                            <td>We don't continue this project after we finish this semester.</td>
+                            <td>Local PV solar w/ battery (10 years use after installation)</td>
+                            <td>0.0</td>
+                            <td>RMB/kWh</td>
                         </tr>
                         <tr>
-                            <td>E</td>
-                            <td></td>
-                            <td></td>
-                            <td>We continue the project next semester, best option as an IP course that continue.</td>
-                        </tr>
-                        <tr>
-                            <td>F</td>
-                            <td></td>
-                            <td></td>
-                            <td>We continue the project next semester but outside classes, either by applying to the MSA Incubator or via the Maker Club.</td>
+                            <td>Local PV solar w/ battery (25 years use after installation)</td>
+                            <td>-0.47</td>
+                            <td>RMB/kWh</td>
                         </tr>
                     </table>
-                    <p>We still deemed that meeting offline was possible. Even the least idealistic goal was to install 10% of solar panels on the roof. </p>
-                    <p>The fact was sooner or later was to be known that we couldn't come back to the campus, therefore could not even build a real prototype. Based on this realization, we had another goal orientation meeting at May 12th. By this time, there is generally one month left before the blank week started. </p>
-                    <p>What are list below were the final outcome:</p>
+                    <p>Below you can see three scenarios using these prices:</p>
                     <ol>
-                        <li>Finish a prototype that can charge a phone or laptop to full battery using solar<br>
-                            完成一个原型，可以使用太阳能为手机或笔记本电脑充电，使其充满电</li>
-                        <li>A finished design for a system that can power the new campus<br>
-                            一个能为新校区部分供电的系统设计</li>
-                        <li>Raise 5000 RMB for a prototype<br>
-                            为原型筹集5000元</li>
-                        <li>Publish a handbook to help guide other students to launch their own solar project<br>
-                            制作一本手册，帮助指导其他学生启动自己的太阳能项目</li>
+                        <li>School only using grid-power mostly coming from the burning of fossil fuels</li>
+                        <li>School generating 6% of energy needs from local PV solar panels, while buying wind-power RECs for 94% of the remaining usage.</li>
+                        <li>School generating 30% of energy needs from local PV solar panels, while buying wind-power RECs for 70% of the remaining usage.</li>
                     </ol>
-                    <p>Though we replaced the actual installment (installing on campuc roof) of the system by other products such as handbook, we still included the installment of prototype in the plan, which, later, we were failed again. I suppose the reason that we made an unrealistic plan twice was that we kept hoping for the best. So, if we do it all over again, I will adviced the people who are in charge of the orientation meeting agenda to hope for and plan BOTH the best and the worst. </p>
-                    <h5>How did we make sure that the whole team has an opportunity to speak and give input before changing big decisions?</h5>
-                    <a href="https://shimo.im/docs/GokLVrJDo2iBF032/" target="_blank">20200512 NEW GOAL</a>
-                    <p>one of the big decisions that we have changed in our project was when the time we changed our project outcome. because of the virus situation, we can not go back to our school campus and to actually build the solar systems on the roof, so our biggest project outcome can not be achieved. then, we have to change our project outcome and to comes with a new plan on what are we going to produce at the end of the semester. </p>
-                    <p>to making sure that the whole team has an opportunity to speak and give input before changing this big decision, our team has organized a meeting to let everyone shared:</p>
-                    <ol>
-                        <li>If we can't install solar panels on the roof of the school, what's an alternative outcome that can make us feel accomplished this semester?</li>
-                        <li>In what shape do you hope this project can continue next semester?</li>
-                    </ol>
-                    <p>Here are some of the answers:</p>
-                    <!--图片-->
-                    <p>lastly, we sumed up all these ideas in to four parts, and these became our prject new outcome that has included everyone's participation and contribution:</p>
-                    <ol>
-                        <li>Finishing a small prototype 完成一个小原型</li>
-                        <li>A project plan / handbook for other to continue the project 项目计划/手册，供其他人继续项目</li>
-                        <li>Track the data about our electricity/carbon footprint 跟踪我们的电力/碳足迹数据</li>
-                        <li>Start captial for continuation of projet next semester 开始下学期继续项目的资金</li>
-                    </ol>
-                    <p>in addition, after we made our new desicion about the project outcome, our team coaches have also talk to everyone 1-on-1, to asked them how were they doing and also they feelings toward this new desicion. </p>
+                    <p>For the following scenarios, the following assumptions are made:</p>
+                    <ul>
+                        <li>Assuming no changes in electricity price or REC prices</li>
+                        <li>Not taking inflation or other macroeconomic factors into account</li>
+                        <li>Assuming the initial investment cost of the local PV solar system of 120m2 scale linearly when building a bigger system.</li>
+                    </ul>
+                    <table class="w-100 table table-sm table-bordered">
+                        <tr>
+                            <th></th>
+                            <th>Scenario 1</th>
+                            <th>Scenario 2</th>
+                            <th>Scenario 2</th>
+                        </tr>
+                        <tr>
+                            <th>Carbon footprint</th>
+                            <td><a href="https://shimo.im/sheets/r4ArzBePeVTYFgAV/MODOC" target="_blank">280 tons per year</a></td>
+                            <td>0 tons per year</td>
+                            <td>0 tons per year</td>
+                        </tr>
+                        <tr>
+                            <th>Initial investment in first year</th>
+                            <td>0 RMB</td>
+                            <td>161,520 RMB</td>
+                            <td>803,000 RMB</td>
+                        </tr>
+                        <tr>
+                            <th>Cost of electricity per year</th>
+                            <td>272,405 RMB</td>
+                            <td>311,219 RMB</td>
+                            <td>231,844 RMB</td>
+                        </tr>
+                        <tr>
+                            <th>Cost of electricity over 10 years</th>
+                            <td>2,724,050 RMB</td>
+                            <td>3,273,711 RMB</td>
+                            <td>3,121,446 RMB</td>
+                        </tr>
+                        <tr>
+                            <th>Cost of electricity over 25 years</th>
+                            <td>6,810,125 RMB</td>
+                            <td>7,941,999 RMB</td>
+                            <td>6,599,099 RMB</td>
+                        </tr>
+                    </table>
+                    <p>Sources and calculations: <a href="https://shimo.im/sheets/r4ArzBePeVTYFgAV/SjUNT" target="_blank">https://shimo.im/sheets/r4ArzBePeVTYFgAV/SjUNT</a></p>
+                    <h4 id="h2-6-3">Besides electricity, what other source of carbon emissions would need to be reduced significantly?</h4>
+                    <p>To Be Developed</p>
                     
-                    <h4 id="h3-1-2">Management </h5>
-                        <p><strong>Contributors: </strong>Cindy</p>
-                        <h5 id="h3-1-2-1">How did we distribute tasks, and meet deadlines?</h5>
-                        <p>Leader's group meet once a week on Monday between 5:30-6:30. During this particular meeting, leaders and coaches
-                            balance information with each other to have a big picture of our project. Through those understanding, we
-                            instantly make adjustments. For example, when we are seeing that tasks are close to be finihsed, lead group
-                            members would propose ideas about how we are going to divide our tasks next. </p>
-                        <p>If one meeting involves too much topics to be discussed, we will divide and set deadlines for the tasks between
-                            us. For leaders, the deadlines are always quite urgent, because we need to swiftly catch up current situation.
-                            Jaguar and Jonathan, two of our team coaches, once constructed a more organised Gannt Chart structure using the
-                            similar logic of WBS (Work Breakdown Structure). The rest of lead's group including Daniel, Billy of Engineering
-                            group, and Laurence, Cindy of the finance group provided feedbacks on the updated Gannt Chart. We then held
-                            another meeting to furthur clarify distribution of responsibilities. For instance, we mark up the person(s) who
-                            would be in charge of a certain task. Note that the names in bold are the owner of the task. To clarify an only
-                            owner is important because this is making people more certain about their works, so that they will not be upset
-                            by different expectations, also be more responsible for their own tasks. </p>
-                        <!--图片-->
-                        <p>Then, engineering finance team leaders and coaches respectively draw timelines for the tasks. We usually start by
-                            setting milestones within a task (denoting the darker colours), then it would easier to complete the rest of the
-                            timeline. </p>
-                        <!--图片-->
-                        <p>What is introduced above is how we oversee the tasks. What's more, the owners of tasks check usually check
-                            progress of their tasks in check-ins - a 30 minutes' meeting between 8:00-8:30 every morning. At every Monday,
-                            our routine schedule is to check the tasks on Gannt Chart and divide the task with more details. We use
-                            Microsoft Planner to do this. Important tasks are checked with special attention. For example, some of the
-                            engineering members held a meeting to evaluate the completion of sensor rig. The team coaches and leaders, who
-                            are willing to support other members, not only give reminders when the tasks are going to be overdue, but also
-                            provide people support in any forms. </p>
-                        <p>*The approach that I mentioned above is called Gannt Chart is a visualised team management tool (Click "Gannt
-                            Chart" to view our Gannt Chart). </p>
-                        <h5 id="h3-1-2-2">How to leaders hold periodic reflections?</h5>
-                        <p>Minor reflections happen every Monday in leaders' routine meeting, where we have informal reflections for the
-                            passing week(s). Based on these reflections, we construct actions plan for following days. </p>
-                        <p>However, a formal reflection meeting is critically required sometimes. At the beginning of the project, in
-                            addition to the form of online collaboration, all of us are not farmiliar with each other, which made our
-                            collaboration and progress even more inproductive. So, one of the leaders proposed the idea of a formal
-                            reflection meeting to reflect on the teamwork. </p>
-                        <!--图片-->
-                        <p>Leaders and coaches realized a bigger picture of the issue (teamwork) and settled matters such as the co-build
-                            activity for the whole team. Click into the link: Leader's Reflection Meeting at 2020/4/6 to see more details.
-                            Other team reflections: 0410
-                    
+                    <h2 id="h3">3. Team</h2>
+                <h3 id="h3-1">What can you learn from our project experience in working effectively?</h3>
+                <p><strong>Contributors: </strong>Jaguar (MATRIX), Laura, Cindy</p>
+                
+                <h4 id="h3-1-1">Setting Goals</h4>
+                <p><strong>Contributors: </strong>Laura, Cindy</p>
+                <a href="https://shimo.im/docs/XCCtKq6t8Q69yX3Y" target="_blank">https://shimo.im/docs/XCCtKq6t8Q69yX3Y</a>
+                <h5 id="h3-1-1-1"><strong>How did we define objectives?</strong></h5>
+                <p>To define the objectives of our project, first we have to look at the problem that we are going to solve in this
+                    project. so in our project, the problem we were focusing was climate change, and this has became our big objectives.
+                    based on climate change, we found the action we want to take in order to better solve this problem: build solar
+                    system on our campus roof. then, the objectives was been defined and we found the reasons of why we were going this
+                    project:</p>
+                <img src="../asset/images/climate-handbook/pic3-1-1-1-1" class="img-fluid col-6">
+                <h5 id="h3-1-1-2"><strong>How did we revaluate the project scope?</strong></h5>
+                <p>We had two major Project Goal evaluation meeting</p>
+                <p>At March 27th, we still hadn't realized the extent of impact the corona-virus quarantine would have on our project.
+                    Here are the plans that people were asked to choose from: </p>
+                <p><strong>Realistic Options for June 15th</strong></p>
+                <table class="w-100" border="1">
+                    <tr>
+                        <th>Option</th>
+                        <th>Worst case before June 15th</th>
+                        <th>Best case before June 15th</th>
+                        <th>What happens after June 15th</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>A prototype finished and 10% of solar panels on the roof. We have a course plan for putting solar on the
+                            roof.</td>
+                        <td>Get prototype working and install at least 250sqm (50%) on roof, have a course plan finished a finished
+                            business case we can give to schools.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>Get prototype working and install at least 250sqm (50%) on roof. We have good documentation on the project,
+                            but no course plan ready to sell.</td>
+                        <td>Achieve 100% solar energy (or other ways to get carbon neutral). We have good documentation on the project,
+                            but no course plan ready to sell.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>We have some kind of solar device, either prototype or a small roof installation. We have a finished
+                            business pitch.</td>
+                        <td>We have at least covered 30% of the roof. We have a finished course plan and already some interested
+                            customers.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td></td>
+                        <td></td>
+                        <td>We don't continue this project after we finish this semester.</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td></td>
+                        <td></td>
+                        <td>We continue the project next semester, best option as an IP course that continue.</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td></td>
+                        <td></td>
+                        <td>We continue the project next semester but outside classes, either by applying to the MSA Incubator or via
+                            the Maker Club.</td>
+                    </tr>
+                </table>
+                <p>We still deemed that meeting offline was possible. Even the least idealistic goal was to install 10% of solar panels
+                    on the roof. </p>
+                <p>The fact was sooner or later was to be known that we couldn't come back to the campus, therefore could not even build
+                    a real prototype. Based on this realization, we had another goal orientation meeting at May 12th. By this time,
+                    there is generally one month left before the blank week started. </p>
+                <p>What are list below were the final outcome:</p>
+                <ol>
+                    <li>Finish a prototype that can charge a phone or laptop to full battery using solar<br>
+                        完成一个原型，可以使用太阳能为手机或笔记本电脑充电，使其充满电</li>
+                    <li>A finished design for a system that can power the new campus<br>
+                        一个能为新校区部分供电的系统设计</li>
+                    <li>Raise 5000 RMB for a prototype<br>
+                        为原型筹集5000元</li>
+                    <li>Publish a handbook to help guide other students to launch their own solar project<br>
+                        制作一本手册，帮助指导其他学生启动自己的太阳能项目</li>
+                </ol>
+                <p>Though we replaced the actual installment (installing on campuc roof) of the system by other products such as
+                    handbook, we still included the installment of prototype in the plan, which, later, we were failed again. I suppose
+                    the reason that we made an unrealistic plan twice was that we kept hoping for the best. So, if we do it all over
+                    again, I will adviced the people who are in charge of the orientation meeting agenda to hope for and plan BOTH the
+                    best and the worst. </p>
+                <h5>How did we make sure that the whole team has an opportunity to speak and give input before changing big decisions?
+                </h5>
+                <a href="https://shimo.im/docs/GokLVrJDo2iBF032/" target="_blank">20200512 NEW GOAL</a>
+                <p>one of the big decisions that we have changed in our project was when the time we changed our project outcome.
+                    because of the virus situation, we can not go back to our school campus and to actually build the solar systems on
+                    the roof, so our biggest project outcome can not be achieved. then, we have to change our project outcome and to
+                    comes with a new plan on what are we going to produce at the end of the semester. </p>
+                <p>to making sure that the whole team has an opportunity to speak and give input before changing this big decision, our
+                    team has organized a meeting to let everyone shared:</p>
+                <ol>
+                    <li>If we can't install solar panels on the roof of the school, what's an alternative outcome that can make us feel
+                        accomplished this semester?</li>
+                    <li>In what shape do you hope this project can continue next semester?</li>
+                </ol>
+                <p>Here are some of the answers:</p>
+                <!--图片-->
+                <p>lastly, we sumed up all these ideas in to four parts, and these became our prject new outcome that has included
+                    everyone's participation and contribution:</p>
+                <ol>
+                    <li>Finishing a small prototype 完成一个小原型</li>
+                    <li>A project plan / handbook for other to continue the project 项目计划/手册，供其他人继续项目</li>
+                    <li>Track the data about our electricity/carbon footprint 跟踪我们的电力/碳足迹数据</li>
+                    <li>Start captial for continuation of projet next semester 开始下学期继续项目的资金</li>
+                </ol>
+                <p>in addition, after we made our new desicion about the project outcome, our team coaches have also talk to everyone
+                    1-on-1, to asked them how were they doing and also they feelings toward this new desicion. </p>
+                
+                <h4 id="h3-1-2">Management </h4>
+                <p><strong>Contributors: </strong>Cindy</p>
+                <h5 id="h3-1-2-1">How did we distribute tasks, and meet deadlines?</h5>
+                <p>Leader's group meet once a week on Monday between 5:30-6:30. During this particular meeting, leaders and coaches
+                    balance information with each other to have a big picture of our project. Through those understanding, we
+                    instantly make adjustments. For example, when we are seeing that tasks are close to be finished, lead group
+                    members would propose ideas about how we are going to divide our tasks next. </p>
+                <p>If one meeting involves too much topics to be discussed, we will divide and set deadlines for the tasks between
+                    us. For leaders, the deadlines are always quite urgent, because we need to swiftly catch up current situation.
+                    Jaguar and Jonathan, two of our team coaches, once constructed a more organised Gannt Chart structure using the
+                    similar logic of WBS (Work Breakdown Structure). The rest of lead's group including Daniel, Billy of Engineering
+                    group, and Laurence, Cindy of the finance group provided feedbacks on the updated Gannt Chart. We then held
+                    another meeting to furthur clarify distribution of responsibilities. For instance, we mark up the person(s) who
+                    would be in charge of a certain task. Note that the names in bold are the owner of the task. To clarify an only
+                    owner is important because this is making people more certain about their works, so that they will not be upset
+                    by different expectations, also be more responsible for their own tasks. </p>
+                <!--图片-->
+                <p>Then, engineering finance team leaders and coaches respectively draw timelines for the tasks. We usually start by
+                    setting milestones within a task (denoting the darker colours), then it would easier to complete the rest of the
+                    timeline. </p>
+                <!--图片-->
+                <p>What is introduced above is how we oversee the tasks. What's more, the owners of tasks check usually check
+                    progress of their tasks in check-ins - a 30 minutes' meeting between 8:00-8:30 every morning. At every Monday,
+                    our routine schedule is to check the tasks on Gannt Chart and divide the task with more details. We use
+                    Microsoft Planner to do this. Important tasks are checked with special attention. For example, some of the
+                    engineering members held a meeting to evaluate the completion of sensor rig. The team coaches and leaders, who
+                    are willing to support other members, not only give reminders when the tasks are going to be overdue, but also
+                    provide people support in any forms. </p>
+                <p>*The approach that I mentioned above is called Gannt Chart is a visualised team management tool (Click "Gannt
+                    Chart" to view our Gannt Chart). </p>
+                <h5 id="h3-1-2-2">How to leaders hold periodic reflections?</h5>
+                <p>Minor reflections happen every Monday in leaders' routine meeting, where we have informal reflections for the
+                    passing week(s). Based on these reflections, we construct actions plan for following days. </p>
+                <p>However, a formal reflection meeting is critically required sometimes. At the beginning of the project, in
+                    addition to the form of online collaboration, all of us are not farmiliar with each other, which made our
+                    collaboration and progress even more inproductive. So, one of the leaders proposed the idea of a formal
+                    reflection meeting to reflect on the teamwork. </p>
+                <!--图片-->
+                <p>Leaders and coaches realized a bigger picture of the issue (teamwork) and settled matters such as the co-build
+                    activity for the whole team. Click into the link: Leader's Reflection Meeting at 2020/4/6 to see more details.
+                    Other team reflections: 0410</p>p>
+            
                     <h4 id="h3-1-3">Documentation and Assessment </h4>
-                        <p><strong>Key Contributors: </strong>Jaguar, Cindy</p>
-                        <h5 id="h3-1-3-1">How do we keep track of our information and materials? </h5>
-                        <p>During the project reflection session, together we made a general project timeline. All of our documents, evidence, including this timeline, are this shared shimo folder. When the project just started, we used Microsoft OneDrive. Although Jaguar and Jonathan instructed us in such details about how to download related applications, I personally didn't get used to use OneDrive before we transform the documentating platform into shimo. Shimo is easier to operate, and in which people could see who are editing at the same time (so that we could remind people to focus on the task). I suppose we should brainstorm some "must-dos" before the project officialy starts, where we could have thought about the improtance of documentation. Then, leaders could arrange a short platform research session. </p>
-                        <!--圖片-->
-                        <h5 id="h3-1-3-2">How did we assess our progress and growth? </h5>h5></h5>
-                        <p></p>Jaguar and Jonathan is in charge of designing the weighing of different sections, which could be tracked in Master Plan. On the other side, we link our evidence in MATRIX. When we link photos and sections in individual folders, the block of the corresponding skill could be truned green. The project coaches verify the skills by turning the green boxes into blue, meaning we have reached the advanced level. The evaluation is not only being counted in GPA, but also a great approach to review a semester-long work, receive feedbacks and future improvements. </p>p>
-                        <!--圖片-->
-                        <p>GPA was calculated from 4 main areas: weekly blogs (10%), soft skills (30%), knowledge skills (30%), and project completion (30%). You can see more about how they were broken down in the picture below: </h4>p></p>
-                        <!--圖片--></p>
-                        <p></p>The MATRIX was mainly used as a means to document the hard skills and knowledge we were learning throughout the project, while blogs and feedback to our peers were used to help us reflect on our progress and improve our soft skills. We tracked blogs in the MASTER PLAN in a specific Blog Records tab: </h4>p>
-                        <!--圖片-->
-                        <p>As for Feedback, periodically we would fill in a chart to give feedback to every member on our sub-group teams. We even gave each other detailed feedback on our specific selected skill strands we each wanted to improve throughout the project according to our school's competency rubrics. Then we would self report how many feedbacks we wrote to our peers and the 15% portion of our grade dependent on feedback was calculated: </p>
-                        <!--圖片-->
-                        <!--圖片-->
+                    <p><strong>Key Contributors: </strong>Jaguar, Cindy</p>
+                    <h5 id="h3-1-3-1">How do we keep track of our information and materials? </h5>
+                    <p>During the project reflection session, together we made a general project timeline. All of our documents,
+                        evidence, including this timeline, are this shared shimo folder. When the project just started, we used
+                        Microsoft OneDrive. Although Jaguar and Jonathan instructed us in such details about how to download related
+                        applications, I personally didn't get used to use OneDrive before we transform the documentating platform
+                        into shimo. Shimo is easier to operate, and in which people could see who are editing at the same time (so
+                        that we could remind people to focus on the task). I suppose we should brainstorm some "must-dos" before the
+                        project officialy starts, where we could have thought about the improtance of documentation. Then, leaders
+                        could arrange a short platform research session. </p>
+                    <!--圖片-->
+                    <h5 id="h3-1-3-2">How did we assess our progress and growth? </h5>
+                    <p>Jaguar and Jonathan is in charge of designing the weighing of different sections, which could be tracked
+                        in Master Plan. On the other side, we link our evidence in MATRIX. When we link photos and sections in
+                        individual folders, the block of the corresponding skill could be truned green. The project coaches verify
+                        the
+                        skills by turning the green boxes into blue, meaning we have reached the advanced level. The evaluation is
+                        not
+                        only being counted in GPA, but also a great approach to review a semester-long work, receive feedbacks and
+                        future improvements.
+                    </p>
+                    <!--圖片-->
+                    <p>GPA was calculated from 4 main areas: weekly blogs (10%), soft skills (30%), knowledge skills (30%), and
+                        project
+                        completion (30%). You can see more about how they were broken down in the picture below:
+                    </p>
+                    <!--圖片-->
+                    <p>The MATRIX was mainly used as a means to document the hard skills and knowledge we were learning throughout
+                        the
+                        project, while blogs and feedback to our peers were used to help us reflect on our progress and improve our
+                        soft
+                        skills. We tracked blogs in the MASTER PLAN in a specific Blog Records tab: </p>
+                    <!--圖片-->
+                    <p>As for Feedback, periodically we would fill in a chart to give feedback to every member on our sub-group
+                        teams. We
+                        even gave each other detailed feedback on our specific selected skill strands we each wanted to improve
+                        throughout
+                        the project according to our school's competency rubrics. Then we would self report how many feedbacks we
+                        wrote to
+                        our peers and the 15% portion of our grade dependent on feedback was calculated: </p>
+                    <!--圖片-->
+                    <!--圖片-->
                     <h4 id="h3-1-4">Roles </h4>
-                        <p><strong>Contributors: </strong>Cindy, Jaguar</p>
-                        
-
-
-                        
-
-                    <h4 id="h3-1-3">3. Team</h4>
-                    <h4 id="h3-1-4">3. Team</h4>
+                    <p><strong>Contributors: </strong>Cindy, Jaguar</p>
+                    <h5 id="h3-1-4-1">How we created a lead group and met weekly? </h5>
+                    <p>The kick-off meeting of Climate Mitigation should be the first lead group meeting. The leaders are who either
+                        volunteered as leaders, or encouraged by the coaches to be leaders. Leaders have been adjusting our roles.
+                        We were
+                        initially responsible for planning check-ins and IP sessions, later, we found that the working pattern was
+                        unproductive, and that when the project progressed, people need more working time. Gradually, it had became
+                        a
+                        routine where Jaguar and Jonathan facilitated the check-ins, and us (learner leaders) lead the working time
+                        in
+                        seperated groups. </p>
+            
+                    <h5 id="h3-1-4-2">What was the role, responsibilities and expectations of Leads?</h5>
+                    <p>The team leaders in this project each take on one area of responsibility (i.e. Engineering System Design,
+                        Fundraising or Public Relations/Communication). While they have the final say and responsibility in their
+                        area, they all share the work of managing the whole team, the resources we have available and making the
+                        best use of our limited time. This include making decision on our strategy, what work is important at what
+                        time and the division of work across the team.</p>
+                    <p>We expect the team leaders to be self-directed, take initiative when observing problems or misunderstandings,
+                        and seek out help from project coaches or team members when needed. As project coaches, we expect team
+                        leaders to tell us when we’re stepping over our boundary, and when we’re not being supportive enough.</p>
+                    <p>The team leaders are responsible for the project outcome in terms of their chosen role (area of
+                        responsibility). They are also responsible for facilitating the majority of working time, and together with
+                        coaches, invite more experienced people to teach the team the skills we need at the right moment. Team
+                        leaders are responsible for the team members under their area of responsibility, to make sure that everyone
+                        is clear on the work that needs to be done, and make sure that there’s a balanced division of work. Team
+                        leaders are also responsible to inform project coaches when the team is having problems that are difficult
+                        to solve.</p>
+            
+                    <h5 id="h3-1-4-3">Why did we split into Engineering and Finance?</h5>
+                    <p>In the coaches' mind, the project could be divided into three sections: Engineering, Finance and Public
+                        Relations&Documentation. While Billy and Daniel were the leaders of Engineering team, Laurence and Yang are
+                        the leaders of Finance. When we guadually gained more knowledge about what our works looked like, we merged
+                        the Public Relations&Documentation section into Finance. Firstly, we only have seven persons in finance
+                        group. Also, applying donors' investment or raise crowdfunding could not be donw without PR&Documentation.
+                    </p>
+                    
                     <h4 id="h3-1-5">Coaches</h4>
-                    <p><strong>Key Contributors:</strong> Jaguar, Cindy</p>
+                    <p><strong>Key Contributors: </strong> Jaguar, Cindy</p>
                     <h5><strong>What was the role of the Coaches?</strong></h5>
-                    <p>
-                        In the Climate Action theme, a project coach is essentially what a basketball coach is for the basketball team, but for our project team. The project coach will assign leaders (like team captains) who already have sufficient experience and track record, while providing strategies for working together as a team. He/she will leave room for each team member to let their strengths shine on the field while giving support and advice for improving their current struggles.
-                        
-                        The project coaches will have more professional experience than the team members and will thus help the team avoid common mistakes and stay on track to achieve our goal. At the same time, the project coach will not get on the field in a game to score a goal for the team and then sit back down, but rather work with the team members to improve their practice (and get tough when they are wasting their potential at the cost of the team).
-                        The responsibility of project coaches are to guarantee that all learners in the project have the chance to and can reach the learning goals. At the same time, they are also partly responsible for the whole project outcome.
-                        The project coaches are also responsible for everyone’s equal opportunity to grow themselves and learn about the content relevant to the project. This may include developing personalized learning paths for team members, finding helpful resources, as well as helping team members to compromise and solve conflicts that are going out of hand.</p>
+                    <p>In the Climate Action theme, a project coach is essentially what a basketball coach is for the basketball team, but for our project team. The project coach will assign leaders (like team captains) who already have sufficient experience and track record, while providing strategies for working together as a team. He/she will leave room for each team member to let their strengths shine on the field while giving support and advice for improving their current struggles.</p>
+                    <p>The project coaches will have more professional experience than the team members and will thus help the team avoid common mistakes and stay on track to achieve our goal. At the same time, the project coach will not get on the field in a game to score a goal for the team and then sit back down, but rather work with the team members to improve their practice (and get tough when they are wasting their potential at the cost of the team).</p>
+                    <p>The responsibility of project coaches are to guarantee that all learners in the project have the chance to and can reach the learning goals. At the same time, they are also partly responsible for the whole project outcome.</p>
+                    <p>The project coaches are also responsible for everyone’s equal opportunity to grow themselves and learn about the content relevant to the project. This may include developing personalized learning paths for team members, finding helpful resources, as well as helping team members to compromise and solve conflicts that are going out of hand.</p>
                     <h5><strong>From Leaners perspective, how did the coaches assists us and coach our project?</strong></h5>
-                    <p>Jonathan, Jaguar and Lidiia were Climate Mitigation's project coaches. While Jonathan worked along Finance group and Jaguar worked in Engineering group, Lidiia was our fund-raising expert, our special guest. 
-                        To extend what are described above (it became a routine...sperated groups), coaches seem didn't provide us too much "visible support", but rather many "invisible support" like encouragements and conversations. In the middle of the project, when we encountered many tensions in teamwork, coaches were defining their roles as well. Jonathan felt that he had taken part in our work too much, considering how to reach a balance between autonomy and control. 
-                        Through the conversations with Jonathan I realized that coaches were similar with us--trying to find weakness and seeking to break through the obstacles or comforst zones. These are what learners comment on coaches concern and the coaches themselves:
-                        
-                        "老张在学期末的时候和项目开始的时候很不一样了，我觉得老张更愿意去带领我们，在团队组织里参与了更多。老张有的时候会担心自己做的太多了，不过我个人觉得没什么问题，因为当老张和抱抱去更多的带领团队的时候，我其实有更多的安全感，也感觉团队是更稳定的。"
-                        
-                        "Lidiia是一个我们找反馈一定会去的地方，每次给的feedback都很有建设性，我觉得是一个很会从其他角度去看待我们项目的人，这个人我觉得也是非常重要的，有了这个人之后我， 才能用不同人的角度看待一个问题，有了不一样的效果和解释。"
-                        
-                        “Dude I am so grateful that you were here to support us and give much feedback to our project. I was tripped out when I led the team to design the full system. It was you that inspired me and pushed my primative thought on the final system. Also, you did a great job answering a lot of questions raised by us. I would remember the time that we discussed the battery stuuff during the late night. In general, thx Jag!“</p>
+                    <p>Jonathan, Jaguar and Lidiia were Climate Mitigation's project coaches. While Jonathan worked along Finance group and Jaguar worked in Engineering group, Lidiia was our fund-raising expert, our special guest.</p>
+                    <p>To extend what are described above (it became a routine...sperated groups), coaches seem didn't provide us too much "visible support", but rather many "invisible support" like encouragements and conversations. In the middle of the project, when we encountered many tensions in teamwork, coaches were defining their roles as well. Jonathan felt that he had taken part in our work too much, considering how to reach a balance between autonomy and control. </p>
+                    <p>Through the conversations with Jonathan I realized that coaches were similar with us--trying to find weakness and seeking to break through the obstacles or comforst zones. These are what learners comment on coaches concern and the coaches themselves: </p>
+                    <p>"老张在学期末的时候和项目开始的时候很不一样了，我觉得老张更愿意去带领我们，在团队组织里参与了更多。老张有的时候会担心自己做的太多了，不过我个人觉得没什么问题，因为当老张和抱抱去更多的带领团队的时候，我其实有更多的安全感，也感觉团队是更稳定的。"</p>
+                    <p>"Lidiia是一个我们找反馈一定会去的地方，每次给的feedback都很有建设性，我觉得是一个很会从其他角度去看待我们项目的人，这个人我觉得也是非常重要的，有了这个人之后我， 才能用不同人的角度看待一个问题，有了不一样的效果和解释。"</p>
+                    <p>“Dude I am so grateful that you were here to support us and give much feedback to our project. I was tripped out when I led the team to design the full system. It was you that inspired me and pushed my primative thought on the final system. Also, you did a great job answering a lot of questions raised by us. I would remember the time that we discussed the battery stuuff during the late night. In general, thx Jag!“</p>
                     <h4 id="h3-1-6">People</h4>
-                    <p><strong>Key Contributors:</strong>Chindy</p>
+                    <p><strong>Key Contributors: </strong>Cindy</p>
                     <h5><strong>What are the advantages and disadvantages as a really big project group?</strong></h5>
                     <p>Climate Mitigation project group has the most people than other IP projects--we have fifteen learners and three project coaches. Though it seems that the disadvantages are brought by the self-identification of big project group, the truth st more complicated than that. Here, I am only trying to do a brief analysis, which might not include the full picture. 
                         In two different perspectives, we are both a big and a small project group, which respectively bring forth advantages and disadvantages. </p>
-                    <ul>
+                    <!-- <ul>
                         <ul>
                             <ul>
 
@@ -497,11 +735,11 @@
                         </ul>
                         
 
-                    </ul>
+                    </ul> -->
                     <h4 id="h3-1-7">Personal Growth</h4>
                 </div>
             </div>
         </div>
-        <script src="../js/ip-climate-handbook.js"></script>
+        <!-- <script src="../js/ip-climate-handbook.js"></script> -->
     </body>
 </html>
