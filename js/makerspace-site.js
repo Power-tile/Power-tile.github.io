@@ -43,5 +43,8 @@ let app = new Vue({
                 people: ["Jaguar", "Daniel He", "Samson", "Billy", "Roy"]
             }
         ]
+    },
+    mounted: {
+        
     }
 })
