@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SCP Makerspace</title>
+        <meta charset="utf-8">
+        <style>
+            .project {
+                border-top: 1px solid gray;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div class="container" id="app">
+            <div class="row">
+                <div class="col-12 p-0 d-flex justify-content-center align-items-center"
+                     style="background-image: url('../asset/images/makerspace-old-meeting.png'); height: 500px; color: white">
+                    <h1 style="font-size: 5rem">We are Makerspace</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                
+            </div>
+
+
+            <h1 class="text-center">Makers</h1>
+            <div v-for="(group, index) in makers" :key="index" class="pb-4">
+                <h4 class="text-center">{{ group.groupName }}</h4>
+                <div class="text-center text-wrap">
+                    <div v-for="(name, i) in group.people" :key="i" class="d-inline-flex pl-2 pr-2">
+                        {{ name }} 
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-center">Projects</h1>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4">
+                <div class="col-2 text-capitalize d-flex align-items-center"><strong>Name</strong></div>
+                <div class="col-3 d-flex align-items-center"><strong>Author</strong></div>
+                <div class="col-7 text-wrap d-flex align-items-center"><strong>Description</strong></div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Hyper Space</div>
+                <div class="col-3 d-flex align-items-center">Billy, Frank</div>
+                <div class="col-7 text-wrap d-flex align-items-center">An individual workplace built in 2 days during Amazing Me</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Shelves</div>
+                <div class="col-3 d-flex align-items-center">Daniel, Kevin Sun, Howen, Cherry, Kevin BA, Samson, Billy</div>
+                <div class="col-7 text-wrap d-flex align-items-center">The big shelf that fill up the eastern wall of makerspace. It is really made by   hands. (Wood frame is our passion, white paint is our hypocrsy)</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Robotic competition</div>
+                <div class="col-3 d-flex align-items-center">Jaguar as sponser</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Strange robots for strange purpose! </div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Kitchen 2049</div>
+                <div class="col-3 d-flex align-items-center">Jonathan, Jaguar, Aimee Du, Samson, Cherry Zhao, Kira, Serena, Kristine</div>
+                <div class="col-7 text-wrap d-flex align-items-center">An imagined kitchen that really work (at least during the exhibition?) for the future, though it is not a bright one...</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Energy Cube 2049</div>
+                <div class="col-3 d-flex align-items-center">Billy, Daniel He, Daniel Yu, Frank Wang, Frank Yin, Kevin Sun</div>
+                <div class="col-7 text-wrap d-flex align-items-center">A clean and efficient energy generator for the life in 2049</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Tables</div>
+                <div class="col-3 d-flex align-items-center">Kevin BA as sponsor</div>
+                <div class="col-7 text-wrap d-flex align-items-center">When we have to put down the Kitchen, we commemorate it by making its body into tables!</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Hugeland</div>
+                <div class="col-3 d-flex align-items-center">Laurance, Kevin BA, Daniel Yu, Wing, Samson, Daniel He</div>
+                <div class="col-7 text-wrap d-flex align-items-center">A pixel style 3D game made with Unity. It is not finished, but it brings us a lot of things, including models with a million triangles!</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Emergence system</div>
+                <div class="col-3 d-flex align-items-center">Daniel He, Samson</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Nobody knows if the strange behavior of the floating objects in Unity space is a result of emergence or programing errors.</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Catapult</div>
+                <div class="col-3 d-flex align-items-center">Daniel He</div>
+                <div class="col-7 text-wrap d-flex align-items-center">The earliest record of moonshoters using a stepper motor (and really strong springs)</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Piano staircase</div>
+                <div class="col-3 d-flex align-items-center">Build Night Attendee</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Have you ever imagined playing piano by stepping on stairs?</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Dripping LEDs</div>
+                <div class="col-3 d-flex align-items-center">Mitch as teacher</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Dripping LEDs with different colors and speeds!</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Build Night</div>
+                <div class="col-3 d-flex align-items-center">Jaguar as founder</div>
+                <div class="col-7 text-wrap d-flex align-items-center">The ideas created in these nights are even more that the number of plugins in makerspace!</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Various Workshops</div>
+                <div class="col-3 d-flex align-items-center">Samson, Daniel</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Free Sketchup workshops, 3D Modelling Chaos, and C++ Brainburners for everyone</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Photogrammetry</div>
+                <div class="col-3 d-flex align-items-center">Dana, Aubrey</div>
+                <div class="col-7 text-wrap d-flex align-items-center">A technology to put the makerspace into a picture 360 degrees</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">SCP Rules</div>
+                <div class="col-3 d-flex align-items-center">Kevin BA, Howen, Samson, Daniel He, Laurence, Billy, Roy</div>
+                <div class="col-7 text-wrap d-flex align-items-center">"When everyone is totally free, there is only chaos." This is especially true here in makerspace</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Matrix</div>
+                <div class="col-3 d-flex align-items-center">Dana, Aubrey, Jaguar as starter</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Tracking everyone's learning with a big big sheet</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Certification of power tools</div>
+                <div class="col-3 d-flex align-items-center">Jaguar</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Cutting anything with a power tool needs certification, even your finger</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Typing contests</div>
+                <div class="col-3 d-flex align-items-center">Jaguar</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Mascot, spiritual overlords, protected creature......who knows?</div>
+            </div>
+            <div class="row w-100 pl-2 pr-2 pt-4 pb-4 project">
+                <div class="col-2 text-capitalize d-flex align-items-center">Opening doorway</div>
+                <div class="col-3 d-flex align-items-center">Billy, Ugo, Samson</div>
+                <div class="col-7 text-wrap d-flex align-items-center">Create a path from makerspace to artspace......secretly......</div>
+            </div>
+        </div>
+        <script src="../js/makerspace-site.js"></script>
+    </body>
+</html>

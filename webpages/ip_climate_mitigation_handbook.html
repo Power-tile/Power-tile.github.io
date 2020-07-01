@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Climate Mitigation Handbook</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <!-- Content -->
+                </div>
+
+                <div class="col-9">
+                    <!-- Text -->
+                    <h2 id="h1">1. Global</h1>
+                    <h2 id="h1-1">1.1 Why do we need to act on/mitigate Climate Change?</h2>
+                    <h3 id="h1-1-1">China (Billy)</h3>
+                    <p>China is the most populous country in the world. And at the same time, its amount of emitting carbon is also much higher than other countries. As the time went by, the climate circumstances in China are not optimistic:</p>
+                    <ul>
+                        <li>In 2008, the China Meteorological Administration (CMA) stated that over the past century (1908-2007) the average temperature of the earth's surface in China has risen by 1.1 degrees Celsius. </li>
+                        <li>The region containing the sources of the two major rivers in China, the Yangtze River and the Yellow River, used to be covered by around 1,369.86 km2 of glacier, whose abundant runoff provides water for both the Yangtze River and the Yellow River.</li>
+                        <li>Global warming has a direct impact on China's coastal areas as the rise in average global temperature accelerates the melting of ice caps and increasing sea levels rise. The "2007 Sea Level Monitoring Report," released by China's State Oceanic Administration, indicated that the average sea level along Chinese coastal areas has increased by 90 millimeters (mm) over the past 30 years. Sea level around Tianjin has risen by 196 mm, more than double the average increase in China.</li>
+                        <li>Glaciers melting in the Himalayas could lead to the overflow of 200 glacial lakes and produce large-scale flooding and mudslides in mountainous areas.</li>
+                    </ul>
+                    <!-- This Place needs monoline appearance TODO -->
+                    <img src="../asset/images/climate-handbook/pic1-1-1-1.png" class="img-fluid">
+                    <img src="../asset/images/climate-handbook/pic1-1-1-2.png" class="img-fluid">
+                    <img src="../asset/images/climate-handbook/pic1-1-1-3.png" class="img-fluid">
+                    
+                    <h2 id="h2">2. Community</h2>
+                    <h3 id="h2-1">What solar energy system is most suitable to power the new MSA campus (Grid vs Battery)?</h2>
+                    <p><strong>Contributors: </strong>Frank (technical details), Daniel (calculation & logistics)</p>
+                    <h4 id="h2-1-1">Technical Details</h3>
+                    <h4 id="h2-1-2">Calculations and Logistics</h3>
+                    <p>After the technical details, I will go through the logistics and calculations needed for choosing the system (grid system vs battery system).</p>
+                    <p>Firstly, the differences between these systems:</p>
+                    <table class="w-100 text-center" border="1">
+                        <tr>
+                            <th></th>
+                            <th>Battery System</th>
+                            <th>Grid System</th>
+                        </tr>
+                        <tr>
+                            <th>Use energy from outer grid</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th>Sell energy to outer grid</th>
+                            <td>No</td>
+                            <td>Yes</td>
+                            </tr>
+                        <tr>
+                            <th>Need Battery for backup</th>
+                            <td>No</td>
+                            <td>No</td>
+                            </tr>
+                        <tr>
+                            <th>Need Battery for Spare Energy</th>
+                            <td>Yes</td>
+                            <td>No</td>
+                            </tr>
+                    </table>
+
+                    <p>Therfore, the key conditional statement that needs determination is:</p>
+                    <p class="text-center"><code>Battery Cost + Money saved for not buying electricity ___ Money gained for selling electricity</code></p>
+                    <p>If the former is bigger, battery system is more favorable; if the latter is bigger, the grid system is more favorable.</p>
+                    <p>In order to determine the battery cost, we also need several portions of information. These information are listed in the table below.</p>
+                    <table class="w-100" border="1">
+                        <tr>
+                            <th>Objectives</th>
+                            <th>Needed Information</th>
+                            <th>Purpose</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Battery Cost</td>
+                            <td>Different types of batteries</td>
+                            <td>Determine the most suitable battery type & prices</td>
+                        </tr>
+                        <tr>
+                            <td>Solar radiation in winter & summer vacation</td>
+                            <td>Calculate electricity generation when no one is using electricity to determine capacity of batteries</td>
+                        </tr>
+                        <tr>
+                            <td>Policies on ventilation in winter & summer vacations</td>
+                            <td>Actual energy consumption during winter & summer vacation</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Money saved for not buying electricity</td>
+                            <td>Energy consumption of our whole campus</td>
+                            <td>Knowing we can generate to what percent of our energy consumption</td>
+                        </tr>
+                        <tr>
+                            <td>Price for electricity in Beijing</td>
+                            <td rowspan="2">Determine how many money we can save</td>
+                        </tr>
+                        <tr>
+                            <td>Estimation on electricity generation</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Money gained for selling electricity</td>
+                            <td>Price for selling electricity in Beijing</td>
+                            <td rowspan="2">Determine amount of money gained for selling electricity</td>
+                        </tr>
+                        <tr>
+                            <td>Policies of selling electricity produced by solar panels in Beijing</td>
+                        </tr>
+                    </table>
+                    <p>Currently, our calculations can be found HERE:</p>
+                    <p>Energy Estimation: <a href="https://shimo.im/sheets/r4ArzBePeVTYFgAV/QjPjG" target="_blank">https://shimo.im/sheets/r4ArzBePeVTYFgAV/QjPjG</a></p>
+                    <p>Financial Benefit for both systems: <a href="https://shimo.im/sheets/r4ArzBePeVTYFgAV/SjUNT" target="_blank">https://shimo.im/sheets/r4ArzBePeVTYFgAV/SjUNT</a></p>
+
+                    <h3 id="h2-2">2.2 How did we build a prototype to test our system design?</h3>
+                    <p><strong>Contributors: </strong>Daniel (sensor rig), Billy (solar panel)</p>
+                    <h4 id="h2-2-1">Solar Panel:</h4>
+                    <p><strong>Needs:</strong></p>
+                    <ol>
+                        <li>Design and purchase the facilities of solar generating</li>
+                        <li>Simulate the working condition of the final system</li>
+                        <li>Provide pratical facilities for Sensor Rig to do the data analysis</li>
+                    </ol>
+                    <p><strong>Strategy:</strong></p>
+                    <img src="../asset/images/climate-handbook/pic2-2-1-1.jpg" class="img-fluid">
+                    <p>Solar panels will first convert the sun's energy into direct current electricity. To store this energy, they need to convert it into chemical energy and store it in batteries. To meet the possible DC load of the new campus and protect the battery, a controller is required to control the battery's charging and discharging.</p>
+                    <p>As the daily electricity demand of the campus is alternating current, the inverter is required to convert the direct current released from the battery to alternating current to meet the daily demand. The parameters such as voltage and current of each component in the whole system must be coordinated with each other. At the same time, we chose to tile the solar panels temporarily, which required custom Angle brackets or brackets for related PHOTOVOLTAIC equipment.</p>
+                    <p><strong>Company: 北京昭丰源科技有限贵任公司</strong></p>
+                    <p>Version 1:</p>
+                    <img src="../asset/images/climate-handbook/pic2-2-1-2.png" class="img-fluid">
+                    <p>This version contains some delicate instruments and they are not necessary for us to do the prototype. Thus the budget at first was very high, closed to 10000 RMB. Finally we checked the facilities above and communicated with the company to eliminate those precise equipments to control the cost.</p>
+                    <p>Version 2:</p>
+                    <img src="../asset/images/climate-handbook/pic2-2-1-3.png" class="img-fluid">
+                    <p>This version is the final one with some basic facilites and suitable equipments to build our prototype. And the cost is also much cheaper than the first version.</p>
+                    <p><strong>Design:</strong></p>
+                    <p>After contacting many designers and architects, we learned that the prototype cannot be designed according to the standard of 500 (also 120) square meters, because the equipment applicable to 500 (also 120) square meters is not the same size as the equipment used by prototype, which is greatly different from each other. That means we can only design a small set of solar equipment as prototype.</p>
+                    <p>Facilities:</p>
+                    <ul>
+                        <li>Polysilicon 320w solar panel * 1</li>
+                        <li>220V50Hz inverter * 1</li>
+                        <li>Charging controller * 1</li>
+                        <li>Battery * 2</li>
+                        <li>Bracket * 1</li>
+                        <li>Pv cable * 15</li>
+                    </ul>
+                    <p>Considering that if we cannot get the donation or sponsorship from others, it is more likely we will use the grid-connected power system. Our prototype tries to imitate grid-connected power generation. However, we cannot personally connect the electricity to the household power distribution cabinet, so we use off-grid equipment such as battery and charging controller for this purpose, but we choose to connect to a large load, so that the battery of the solar panel is in an empty state during the generation process, so as to imitate the power generation efficiency when connected to the grid. And small power distribution cabinet is the special power distribution cabinet that is used when imitating grid connection. The bracket can adjust the Angle at any time, usually 32°, but we will change the Angle during the test to test the light intensity and other variables.</p>
+                    <p><strong>Result:</strong></p>
+                    <p>We had a great conversation with the clerk of that company. Through almost two months' work, we got a contract from the company. Now we have been approved by Moonshot. We are ready to sign this contract and send it back to the company!</p>
+                    <div class="row">
+                        <img src="../asset/images/climate-handbook/pic2-2-1-4.jpg" class="img-fluid col-6">
+                        <img src="../asset/images/climate-handbook/pic2-2-1-5.jpg" class="img-fluid col-6">
+                    </div>
+                    <h4 id="h2-2-2">Sensor Rig:</h4>
+                    <p>For small-scaled prototyping of solar panel systems, only using the region data collected by various climate organizations is sufficient for estimating the power generation of the system. However, for the full system design, we need specific information on the solar radiation at different parts of our roof in order to determine the needed size of battery, inverters, and various other components.</p>
+                    <p>We researched on high-level sensors that can autocollect data for more than 6 days, but none is available on the internet. In order to collect realistic data, we decided to design and build such a solar sensor rig to collect the data of solar radiation.</p>
+                    <img src="../asset/images/climate-handbook/pic2-2-2-1.png" class="img-fluid">
+                    <p class="text-secondary text-center">Sketch of Sensor Rig Prototyping</p>
+                    <p>Every sensor rig contains three light intensity sensors. Two of them are fixed-direction sensors, while another one is constantly rotating, tracking the maximum solar radiation in the minute-long time interval along with its direction. This is for the decision of fixed-direction solar panel system / tracking solar panel system. In order to maintain the precision of the record, we uses two stepper motors and timer belts to rotate the third sensor.</p>
+                    <p>Powered by an Arduino Mega board along with a card battery, this sensor rig is expected to run for more than 6 days, and all data will be collected and saved into an 64MB SD card. The data in the card will be extracted and analyzed using the Python language.</p>
+                    <img src="../asset/images/climate-handbook/pic2-2-2-2.png" class="img-fluid">
+                    <p class="text-secondary text-center">Partial 3D Model of Sensor Rig</p>
+                    <p>Our Bill of Materials (BOM): <a href="https://shimo.im/sheets/7Q3QyYvV4JS1FD3n/G5l4N" target="_blank">https://shimo.im/sheets/7Q3QyYvV4JS1FD3n/G5l4N</a></p>
+                    <p>Each sensor rig is estimated to price about 850RMB.</p>
+                    <p>Our design of the sensor rig is more than 90% finished. Parts needed design are: fastenizer for stablizing the gears, and the bottom side screw supports.</p>
+
+                    <h3 id="h2-3">2.3 What are the Details of our Full System Solar Panel System Design?</h3>
+                    <!-- TODO add stuff here -->
+
+                    <h3 id="h2-4">2.4 How can a campus solar system be financed?</h3>
+                    <p>在学校的屋顶建立太阳能板可不是一个简单的工程，在资金需求上也不算少。购买一个屋顶的太阳能板总共需要60多万，而在前期确定购买材料之前，我们还需要搭建系统的模型，话费5200块钱。</p>
+                    <p>这么多钱，我们从哪里弄到呢？我们又是如何及时的为整个系统提供资金的？</p>
+                    
+                    
+                    
+                    <h2 id="h3"></h3>3. Team</h2>
+                    <h3 id="h3-1">What can you learn from our project experience in working effectively?</h3>
+                    <p><strong>Contributors: </strong>Jaguar (MATRIX), Laura, Cindy</p>
+                    
+                    <h4 id="h3-1-1">Setting Goals</h4>
+                    <p><strong>Contributors: </strong>Laura, Cindy</p>
+                    <a href="https://shimo.im/docs/XCCtKq6t8Q69yX3Y" target="_blank">https://shimo.im/docs/XCCtKq6t8Q69yX3Y</a>
+                    <h5 id="h3-1-1-1"><strong>How did we define objectives?</strong></h5>
+                    <p>To define the objectives of our project, first we have to look at the problem that we are going to solve in this project. so in our project, the problem we were focusing was climate change, and this has became our big objectives. based on climate change, we found the action we want to take in order to better solve this problem: build solar system on our campus roof. then, the objectives was been defined and we found the reasons of why we were going this project:</p>
+                    <img src="../asset/images/climate-handbook/pic3-1-1-1-1" class="img-fluid col-6">
+                    <h5 id="h3-1-1-2"><strong>How did we revaluate the project scope?</strong></h5>
+                    <p>We had two major Project Goal evaluation meeting</p>>
+                    <p>At March 27th, we still hadn't realized the extent of impact the corona-virus quarantine would have on our project. Here are the plans that people were asked to choose from: </p>
+                    <p><strong>Realistic Options for June 15th</strong></p>
+                    <table class="w-100" border="1">
+                        <tr>
+                            <th>Option</th>
+                            <th>Worst case before June 15th</th>
+                            <th>Best case before June 15th</th>
+                            <th>What happens after June 15th</th>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>A prototype finished and 10% of solar panels on the roof. We have a course plan for putting solar on the roof.</td>
+                            <td>Get prototype working and install at least 250sqm  (50%) on roof, have a course plan finished a finished business case we can give to schools.</td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    <table>
+                    
+                    
+                    
+                    
+                    <h4 id="h3-1-2">3. Team</h4>
+                    <h4 id="h3-1-3">3. Team</h4>
+                    <h4 id="h3-1-4">3. Team</h4>
+                    <h4 id="h3-1-5">Coaches</h4>
+                    <h4 id="h3-1-6">People</h4>
+                    <h4 id="h3-1-7">Personal Growth</h4>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
