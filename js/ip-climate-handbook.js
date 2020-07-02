@@ -1,5 +1,5 @@
 let climate = new Vue({
-    id: "#climate",
+    el: "#climate",
     data: function() {
         return {};
     },
