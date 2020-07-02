@@ -1,8 +1,6 @@
 let main = new Vue({
     el: "#main",
-    data: function() {
-        return {
-            
-        }
+    data: {
+        mainCarousel: 0
     }
 })
