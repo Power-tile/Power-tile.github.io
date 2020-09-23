@@ -52,7 +52,7 @@ let app = new Vue({
             return index !== 9;
         },
         addNumber: function(size) {
-            if (this.prizeNumbers.white.length === 0 || size < 0 || size > 50000 || Math.abs(Math.trunc(addCount) - addCount) > 0.000001) return;
+            if (this.prizeNumbers.white.length === 0 || size < 0 || size > 50000 || Math.abs(Math.trunc(this.addCount) - this.addCount) > 0.000001) return;
             for (let i = 0; i < size; i++) {
                 this.randomData.push(this.generateNumbers());
             }
