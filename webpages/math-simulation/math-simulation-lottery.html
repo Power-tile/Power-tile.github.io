@@ -47,7 +47,7 @@
                         Generate 
                         <input class="input ml-1 mr-1" style="width: 100px" type="number" v-model="addCount">
                         number(s)
-                        <button :class="['btn btn-sm btn-primary ml-2', {'disabled cursor-disabled': prizeNumbers.white.length === 0 || addCount < 0 || addCount > 50000}]"
+                        <button :class="['btn btn-sm btn-primary ml-2', {'disabled cursor-disabled': prizeNumbers.white.length === 0 || addCount < 0 || addCount > 50000 || Math.abs(Math.trunc(addCount) - addCount) > 0.000001}]"
                                 @click="addNumber(addCount);">Generate</button>
                     </div>
                     <div v-if="addCount < 0" class="alert alert-warning mt-2">
@@ -55,6 +55,9 @@
                     </div>
                     <div v-if="addCount > 50000" class="alert alert-warning mt-2">
                         <strong>Warning!</strong> Your number is too large for the program. Try a smaller one.
+                    </div>
+                    <div v-if="Math.abs(Math.trunc(addCount) - addCount) > 0.000001" class="alert alert-warning mt-2">
+                        <strong>Warning!</strong> You entered a decimal. Please enter an integer to proceed.
                     </div>
                     <div v-if="prizeNumbers.white.length === 0" class="alert alert-danger mt-2">
                         Press "Initialize New Session" to generate the prize-winning numbers.
