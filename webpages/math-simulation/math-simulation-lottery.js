@@ -6,7 +6,7 @@ let app = new Vue({
             red: 0,
         },
         prizeInfo: [[9, 8], [9, 7], [9, 6], [5, 4], [3, 2], [1, 0]],
-        prizeNames: ["5+1", "5+0", "4+1", "4+0", "3+1", "3+0", "2+1", "1+1", "0+1", "0+0"],
+        prizeNames: ["5+1", "5+0", "4+1", "4+0", "3+1", "3+0", "2+1", "1+1", "0+1", "NULL"],
         prizeCount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         winningData: [], // lottery that wins a prize
         randomData: [], // all lottery data
@@ -22,7 +22,10 @@ let app = new Vue({
                 red: 0
             };
 
-            for (let i = 0; i < 5; i++) ret.white.push(this.randIntBetween(1, 69));
+            while (ret.white.length < 5) {
+                let newNumber = this.randIntBetween(1, 69);
+                if (!ret.white.includes(newNumber)) ret.white.push(newNumber);
+            }
             ret.red = this.randIntBetween(1, 26);
 
             return ret;
