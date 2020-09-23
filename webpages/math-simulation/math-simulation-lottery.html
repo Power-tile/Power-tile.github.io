@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Math Simulation Series: Lottery</title>
+        <meta charset="utf-8">
+
+        <script src="../../node_modules/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+        <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <style>
+            .cursor-disabled {
+                cursor: not-allowed !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="math-simulation-lottery">
+            <h2>Math Simulation Series: Lottery</h2>
+            <div class="row">
+                <!-- Console -->
+                <div class="col">
+                    <h4>Console</h4>
+                    <h5>Prize-winning Numbers</h5>
+                    <div class="row" class="text-center" v-if="prizeNumbers.white.length > 0">
+                        <div class="col"></div>
+                        <div class="col text-center" v-for="number in prizeNumbers.white">
+                            {{ number }}
+                        </div>
+                        <div class="col-1">|</div>
+                        <div class="col text-center">{{ prizeNumbers.red }}</div>
+                        <div class="col"></div>
+                    </div>
+                    <div v-else>
+                        <div class="text-center">
+                            Prize Numbers not Generated
+                        </div>
+                    </div>
+
+                    <hr>
+                    <h5>Actions</h5>
+                    <div class="mb-2">
+                        <button class="btn btn-sm btn-danger" @click="init">Init New Session</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        Generate 
+                        <input class="input ml-1 mr-1" style="width: 100px" type="number" v-model="addCount">
+                        number(s)
+                        <button :class="['btn btn-sm btn-primary ml-2', {'disabled cursor-disabled': prizeNumbers.white.length === 0 || addCount < 0 || addCount > 50000}]"
+                                @click="addNumber(addCount);">Generate</button>
+                    </div>
+                    <div v-if="addCount < 0" class="alert alert-warning mt-2">
+                        <strong>Warning!</strong> You are attempting to input a negative number to this input bar.
+                    </div>
+                    <div v-if="addCount > 50000" class="alert alert-warning mt-2">
+                        <strong>Warning!</strong> Your number is too large for the program. Try a smaller one.
+                    </div>
+                    <div v-if="prizeNumbers.white.length === 0" class="alert alert-danger mt-2">
+                        Press "Initialize New Session" to generate the prize-winning numbers.
+                    </div>
+
+                    <hr>
+                    <h5>Statistics</h5>
+                    <div>
+                        <dl class="mt-2">
+                            <dt class="d-inline">Total Count:</dt>
+                            <dd class="d-inline">{{ randomData.length }}</dd>
+                        </dl>
+                        <div class="row font-weight-bold">
+                            <div class="col-5">Prize Name</div>
+                            <div class="col">Count</div>
+                            <div class="col">Proportion</div>
+                        </div>
+                        <div class="row" v-for="(count, index) in prizeCount">
+                            <div class="col-5 font-weight-bold text-center">{{ prizeNames[index] }}</div>
+                            <div class="col text-center">{{ count }}</div>
+                            <div class="col text-center">{{ (randomData.length > 0) ? Math.round(count * 100000.0 / randomData.length) / 1000 : 0 }}%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prize Winning Data -->
+                <div class="col">
+                    <h4>Prize-winning Lottery</h4>
+                    <div class="row" class="text-center" v-if="winningData.length > 0"
+                         v-for="numbers in winningData.slice(-Math.min(winningData.length, 30)).reverse()">
+                        <div class="col"></div>
+                        <div :class="['col text-center', {'text-danger font-weight-bold': prizeNumbers.white.includes(number)}]" v-for="number in numbers.white">
+                            {{ number }}
+                        </div>
+                        <div class="col-1">|</div>
+                        <div :class="['col text-center', {'text-danger font-weight-bold': numbers.red === prizeNumbers.red}]">{{ numbers.red }}</div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+    
+                <!-- Last Simulated Data -->
+                <div class="col">
+                    <h4>All Chosen Lottery</h4>
+                    <div class="row" class="text-center" v-if="randomData.length > 0"
+                         v-for="numbers in randomData.slice(-Math.min(randomData.length, 30)).reverse()">
+                        <div class="col"></div>
+                        <div class="col text-center" v-for="number in numbers.white">
+                            {{ number }}
+                        </div>
+                        <div class="col-1">|</div>
+                        <div class="col text-center">{{ numbers.red }}</div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./math-simulation-lottery.js"></script>
+    </body>
+</html>
