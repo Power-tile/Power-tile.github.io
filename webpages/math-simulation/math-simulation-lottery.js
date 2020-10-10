@@ -5,30 +5,35 @@ let app = new Vue({
             white: [],
             red: 0,
         },
-        prizeInfo: [[9, 8], [9, 7], [9, 6], [5, 4], [3, 2], [1, 0]],
-        prizeNames: ["5+1", "5+0", "4+1", "4+0", "3+1", "3+0", "2+1", "1+1", "0+1", "NULL"],
+        prizeInfo: [[9, 8], [9, 7], [9, 6], [5, 4], [3, 2], [1, 0]], // connection between awards and numbers
+        prizeAmountInfo: [0, 1000000, 50000, 100, 100, 7, 7, 4, 4, 0], // prize of awards
+        prizeNames: ["5+1", "5+0", "4+1", "4+0", "3+1", "3+0", "2+1", "1+1", "0+1", "NULL"], // name of awards
+        moneyPerLottery: 2, // money spent for buying one lottery
         prizeCount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         winningData: [], // lottery that wins a prize
         randomData: [], // all lottery data
         addCount: 1,
+        moneySpent: 0,
+        moneyAwarded: 0,
+        hasGrandPrize: false,
     },
     methods: {
         randIntBetween: function(min, max) {
             return Math.round(Math.random() * (max - min) + min);
         },
-        generateNumbers: function() {
-            let ret = {
-                white: [],
-                red: 0
-            };
-
-            while (ret.white.length < 5) {
-                let newNumber = this.randIntBetween(1, 69);
-                if (!ret.white.includes(newNumber)) ret.white.push(newNumber);
+        sampleIntWithoutRepitition: function(min, max, count) {
+            let ret = [];
+            while (ret.length < count) {
+                let newNumber = this.randIntBetween(min, max);
+                if (!ret.includes(newNumber)) ret.push(newNumber);
             }
-            ret.red = this.randIntBetween(1, 26);
-
-            return ret;
+            return ret;                            
+        },
+        generateNumbers: function() {
+            return {
+                white: this.sampleIntWithoutRepitition(1, 69, 5),
+                red: this.sampleIntWithoutRepitition(1, 26, 1)[0]
+            };
         },
         init: function() {
             this.$set(this, "winningData", []);
@@ -36,6 +41,10 @@ let app = new Vue({
             this.$set(this, "prizeNumbers", this.generateNumbers());
             this.$set(this, "prizeCount", []);
             for (let i = 0; i < 10; i++) this.prizeCount.push(0);
+
+            this.moneySpent = 0;
+            this.moneyAwarded = 0;
+            this.hasGrandPrize = false;
         },
         checkNumber: function(data) {
             let white = 0, red = 0;
@@ -49,12 +58,18 @@ let app = new Vue({
 
             let index = this.prizeInfo[white][red];
             this.prizeCount[index]++;
+            if (index > 0 && index < 9) {
+                this.moneyAwarded += this.prizeAmountInfo[index];
+            } else if (index === 0) {
+                this.hasGrandPrize = true;
+            }
             return index !== 9;
         },
         addNumber: function(size) {
             if (this.prizeNumbers.white.length === 0 || size < 0 || size > 50000 || Math.abs(Math.trunc(this.addCount) - this.addCount) > 0.000001) return;
             for (let i = 0; i < size; i++) {
                 this.randomData.push(this.generateNumbers());
+                this.moneySpent += this.moneyPerLottery;
             }
         }
     },
