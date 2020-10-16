@@ -49,8 +49,7 @@ let jsOJ = new Vue({
             }
         },
         changeProblem: function() {
-            this.grade = 0;
-            this.userCode = 0;
+            this.results.splice(0);
         }
     },
     mounted: function() {
@@ -78,7 +77,6 @@ let jsOJ = new Vue({
                             self.$emit('input', self.userCode);
                         }
                     });
-                    console.log(self.codeMirror);
                 }, 10);
             }
         }
