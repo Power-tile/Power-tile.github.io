@@ -1,0 +1,74 @@
+[
+    {
+        "problemName": "奇偶数 (odd_even)",
+        "variables": ["number"],
+        "data": [
+            {
+                "input": [3],
+                "output": "odd"
+            },
+            {
+                "input": [10],
+                "output": "even"
+            },
+            {
+                "input": [-18],
+                "output": "even"
+            },
+            {
+                "input": [9],
+                "output": "odd"
+            },
+            {
+                "input": [34],
+                "output": "even"
+            }
+        ]
+    },
+    {
+        "problemName": "判断闰年 (leap_year)",
+        "variables": ["year"],
+        "data": [
+            {
+                "input": [2016],
+                "output": "是闰年!"
+            },
+            {
+                "input": [1975],
+                "output": "Samson会秃!"
+            },
+            {
+                "input": [1900],
+                "output": "Samson会秃!"
+            },
+            {
+                "input": [2000],
+                "output": "是闰年!"
+            },
+            {
+                "input": [2300],
+                "output": "Samson会秃!"
+            },
+            {
+                "input": [2036],
+                "output": "是闰年!"
+            },
+            {
+                "input": [2039],
+                "output": "Samson会秃!"
+            },
+            {
+                "input": [4108],
+                "output": "是闰年!"
+            },
+            {
+                "input": [5041],
+                "output": "Samson会秃!"
+            },
+            {
+                "input": [5100],
+                "output": "Samson会秃!"
+            }
+        ]
+    }
+]

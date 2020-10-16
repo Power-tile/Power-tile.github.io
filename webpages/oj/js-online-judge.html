@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Online Judge</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.1/lib/codemirror.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.1/lib/codemirror.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.1/theme/xq-light.css">
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.1/mode/javascript/javascript.js"></script>
+
+        <style>
+            .cursor-disabled {
+                cursor: not-allowed
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="js-online-judge" class="container">
+            <h2 class="w-100 text-center">JavaScript Online Judge | SCP Makerspace</h2>
+
+            <div class="w-100 row" v-if="data[0]">
+                <div class="col-7 border-right" >
+                    <h4>Code</h4>
+                    <div class="card" v-for="(variableName, index) in data[currentProblem].variables" :key="variableName" style="height: 2.5em">
+                        <code class="card-body row py-0">
+                            <div class="col-2 d-flex align-items-center"> {{ variableName }} </div>
+                            <div class="col-1 text-center d-flex align-items-center"> => </div>
+                            <div class="col d-flex align-items-center">
+                                <input class="form-control form-control-sm" v-model="localVariableNames[index]">
+                            </div>
+                            <!-- <div class="col-1"></div> -->
+                        </code>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <textarea ref="codeArea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <h4>Console</h4>
+                    <div class="row">
+                        <div class="col">
+                            <select class="form-control" v-model="currentProblem">
+                                <option v-for="(problem, index) in data" :value="index"> {{ problem.problemName }} </option>
+                            </select>
+                        </div>
+                        <div class="col-2 p-0 d-flex align-items-center">
+                            <button :class="['btn btn-sm btn-primary w-100', { 'cursor-disabled': disable }]" @click="evaluate" :disabled="disable">Evaluate</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" v-for="(io, index) in data[currentProblem].data" :key="index">
+                        <div class="col-7">Sample #{{index+1}}</div>
+                        <div class="col text-center font-weight-bold">
+                            <div v-if="results[index] === 1" class="text-success">Accepted</div>
+                            <div v-if="results[index] === 0" class="text-danger">Wrong Answer</div>
+                            <div v-if="results[index] === -1" class="text-info">Pending</div>
+                            <div v-if="results[index] === -2" class="text-warning">Error</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="font-weight-bold text-danger"> {{ errorMessage }} </div>
+                </div>
+            </div>
+
+            <div v-else class="w-100 text-center">Loading...</div>
+        </div>
+
+        <script src="./js-online-judge.js"></script>
+    </body>
+</html>
