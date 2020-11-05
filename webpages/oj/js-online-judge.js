@@ -2,6 +2,7 @@ let jsOJ = new Vue({
     el: "#js-online-judge",
     data: {
         codeMirror: {},
+        defaultCodeMirror: {},
         localVariableNames: [],
         data: [],
         currentProblem: 0,
@@ -25,16 +26,13 @@ let jsOJ = new Vue({
                     }, {});
                     let __result__ = "";
                     let __output__ = function() {
-                        // arguments.forEach((outputEle) => {
-                        //     __result__ += outputEle;
-                        // });
                         for (let i = 0; i < arguments.length; i++) {
                             __result__ += arguments[i];
                         }
                     }
                     this.results.push(-1);
 
-                    eval(this.processedCode);
+                    eval(this.processedUserCode + this.processedDefaultCode);
 
                     if (__result__ === io.output) {
                         count++;
@@ -50,6 +48,19 @@ let jsOJ = new Vue({
         },
         changeProblem: function() {
             this.results.splice(0);
+        },
+        processCode: function(code) {
+            if (!this.data[this.currentProblem]) return "";
+
+            let ret = code;
+            this.data[this.currentProblem].variables.forEach((varName, index) => {
+                let from = this.localVariableNames[index], to = varName;
+                if (from === undefined || from === "") return;
+                ret = ret.replace(eval('/\\b' + from + '\\b/g'), "obj['" + to + "']");
+            });
+            ret = ret.replace(/console\.log/g, "__output__");
+
+            return ret;
         }
     },
     mounted: function() {
@@ -68,7 +79,8 @@ let jsOJ = new Vue({
                     self.codeMirror = CodeMirror.fromTextArea(self.$refs.codeArea, {
                         mode: "javascript",
                         indentUnit: 4,
-                        theme: "xq-light"
+                        theme: "xq-light",
+                        scrollbarStyle: "overlay"
                     });
                     self.codeMirror.on('change', (element) => {
                         self.userCode = element.getValue();
@@ -77,28 +89,62 @@ let jsOJ = new Vue({
                             self.$emit('input', self.userCode);
                         }
                     });
+
+                    self.defaultCodeMirror = CodeMirror.fromTextArea(self.$refs.defaultCodeArea, {
+                        mode: "javascript",
+                        indentUnit: 4,
+                        theme: "xq-light",
+                        readOnly: true,
+                        scrollbarStyle: "overlay"
+                    });
                 }, 10);
+
+                setTimeout(() => {
+                    self.userCode = "// 请在这里输入你的代码";
+                }, 20);
             }
         }
         req.send();
     },
     computed: {
-        processedCode: function() {
-            if (!this.data[this.currentProblem]) return "";
-
-            let ret = this.userCode;
-            this.data[this.currentProblem].variables.forEach((varName, index) => {
-                let from = this.localVariableNames[index], to = varName;
-                if (from === undefined || from === "") return;
-                ret = ret.replace(eval('/\\b' + from + '\\b/g'), "obj['" + to + "']");
-            });
-
-            ret = ret.replace(/console\.log/g, "__output__");
-
-            return ret;
+        defaultCode: function() {
+            return this.data.length ? (this.data[this.currentProblem].code) : "";
+        },
+        processedUserCode: function() {
+            return this.processCode(this.userCode);
+        },
+        processedDefaultCode: function() {
+            return this.processCode(this.defaultCode);
         },
         disable: function() {
-            return this.userCode.trim() === "" || this.localVariableNames.filter(name => name === "").length > 0;
+            return this.userCode.trim() === ""
+               || (this.data[this.currentProblem].variables.length > 0
+                && this.localVariableNames.filter(name => name === "").length > 0);
+        },
+        testResults: function() {
+            if (!this.data[this.currentProblem].tests) return [];
+
+            return this.data[this.currentProblem].tests.map((element) => {
+                let ret;
+                try {
+                    let code = this.processedUserCode + "\nret = " + element.expression;
+                    eval(code);
+                } catch (error) {
+                    console.log(error.message);
+                    return "__error__";
+                }
+                return ret;
+            });
+        }
+    },
+    watch: {
+        currentProblem: {
+            handler: function(newValue) {
+                this.defaultCodeMirror.setValue(this.data[newValue].code);
+                setTimeout(() => {
+                    this.defaultCodeMirror.refresh();
+                }, 100);
+            }
         }
     }
 });

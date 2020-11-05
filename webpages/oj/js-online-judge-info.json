@@ -23,7 +23,9 @@
                 "input": [34],
                 "output": "even"
             }
-        ]
+        ],
+        "message": "如果是偶数，输出even，否则输出odd。",
+        "code": ""
     },
     {
         "problemName": "判断闰年 (leap_year)",
@@ -69,6 +71,39 @@
                 "input": [5100],
                 "output": "Samson会秃!"
             }
-        ]
+        ],
+        "message": "",
+        "code": ""
+    },
+    {
+        "problemName": "寻找最大数 (max_number)",
+        "variables": [],
+        "data": [{
+            "input": [],
+            "output": "5"
+        }],
+        "tests": [
+            {
+                "expression": "max(3, 2)",
+                "expected": 3
+            },
+            {
+                "expression": "max(-2, 0)",
+                "expected": 0
+            },
+            {
+                "expression": "max(4.9, 2.3)",
+                "expected": 4.9
+            }
+        ],
+        "message": "【函数练习】\n请大家在下面的代码块里定义一个叫做max的函数，接受两个参数，并返回其中更大的数字。同时，请注意下面已有的代码，作用为定义一个叫做findMaxNumber的变量，接受一个参数arr并返回其中最大的数字。请大家注意这段代码是如何按下标对数组中所有数字进行循环，以及如何调用你写的函数的。",
+        "code": "// 寻找数组中的最大数字。函数名称：findMaxNumber；传递参数(输入值)：数组arr。\nlet findMaxNumber = function(arr) {\n    let ret = 0; // 记录返回值的变量。\n    for (let i = 0; i < arr.length; i++) { // 根据数组下标用for循环遍历数组。\n        ret = max(ret, arr[i]); // 这句话是做什么的呢?\n    }\n    return ret; // 返回计算结束后的值。\n}\n\nlet numbers = [1, -1, 3, 5, 2.5, 3.14]; // 定义初始数组。\nlet result = findMaxNumber(numbers); // 将数组作为参数，调用findMaxNumber，将结果保存在result中。\nconsole.log(result); // 输出结果。"
+    },
+    {
+        "problemName": "测试题目 (test)",
+        "variables": ["notExist"],
+        "data": [],
+        "message": "现在可以显示提示啦！\n哈哈哈哈哈哈哈",
+        "code": "// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n// 也会被执行的代码\n"
     }
 ]
