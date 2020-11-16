@@ -100,7 +100,7 @@
                             <code class="col-5"> {{ test.expression }} </code>
                             <code class="col text-center"> {{ test.expected }} </code>
                             <code class="col text-center text-warning font-weight-bold" v-if="testResults[index] === '__error__'"> Error </code>
-                            <code class="col text-center text-danger font-weight-bold" v-else-if="testResults[index] != test.expected"> {{ testResults[index] }} </code>
+                            <code class="col text-center text-danger font-weight-bold" v-else-if="!safeEquals(testResults[index], test.expected)"> {{ testResults[index] }} </code>
                             <code class="col text-center text-success font-weight-bold" v-else> {{ test.expected }} </code>
                         </div>
                         <hr>

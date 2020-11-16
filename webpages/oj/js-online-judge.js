@@ -61,6 +61,25 @@ let jsOJ = new Vue({
             ret = ret.replace(/console\.log/g, "__output__");
 
             return ret;
+        },
+        safeEquals: function(p, q) {
+            if (p instanceof Array && q instanceof Array) {
+                if (!p || !q) return false;
+                if (p.length !== q.length) return false;
+                let equals = function(u, v) {
+                    for (let i = 0; i < u.length; i++) {
+                        if (u[i] instanceof Array && v[i] instanceof Array) {
+                            if (!equals(u[i], v[i])) return false;
+                        } else if (u[i] !== v[i]) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                return equals(p, q);
+            } else {
+                return p === q;
+            }
         }
     },
     mounted: function() {
@@ -111,10 +130,10 @@ let jsOJ = new Vue({
             return this.data.length ? (this.data[this.currentProblem].code) : "";
         },
         processedUserCode: function() {
-            return this.processCode(this.userCode);
+            return this.processCode(this.userCode + "\n");
         },
         processedDefaultCode: function() {
-            return this.processCode(this.defaultCode);
+            return this.processCode(this.defaultCode + "\n");
         },
         disable: function() {
             return this.userCode.trim() === ""
@@ -127,7 +146,8 @@ let jsOJ = new Vue({
             return this.data[this.currentProblem].tests.map((element) => {
                 let ret;
                 try {
-                    let code = this.processedUserCode + "\nret = " + element.expression;
+                    let code = this.processedUserCode + this.processedDefaultCode + "\nret = " + element.expression;
+                    let __output__ = function() {};
                     eval(code);
                 } catch (error) {
                     console.log(error.message);
