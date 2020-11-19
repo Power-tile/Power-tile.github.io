@@ -146,7 +146,7 @@
                 "expected": [4, -10, -9, 2, -1, 3]
             }
         ],
-        "message": "【数组函数练习】用function和forEach写一个自己的filter吧。你的myFilter()应该传入两个参数：当前操作的数组与代表判断标准的函数。",
+        "message": "【数组函数练习】用function和forEach写一个自己的reduce吧。你的myReduce()应该传入三个参数：当前操作的数组、处理上次的结果与当前元素的函数、初始值。",
         "code": "let arr = [5, -9, -8, 3, 0, 4];"                                      
     },
     {
