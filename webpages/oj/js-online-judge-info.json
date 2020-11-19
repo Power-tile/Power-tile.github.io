@@ -125,6 +125,31 @@
         "code": "let arr = [5, -9, -8, 3, 0, 4];"                                      
     },
     {
+        "problemName": "我的reduce (my_reduce)",
+        "variables": [],
+        "data": [],
+        "tests": [
+            {
+                "expression": "myReduce(arr, (prev, curr) => (prev + curr), 0)",
+                "expected": -5
+            },
+            {
+                "expression": "myReduce(arr, (prev, curr) => (prev - curr), -3)",
+                "expected": 2
+            },
+            {
+                "expression": "myReduce(arr, (prev, curr) => curr+1, 10)",
+                "expected": 5
+            },
+            {
+                "expression": "myReduce(arr, (prev, curr) => { prev.push(curr - 1); return prev; }, [])",
+                "expected": [4, -10, -9, 2, -1, 3]
+            }
+        ],
+        "message": "【数组函数练习】用function和forEach写一个自己的filter吧。你的myFilter()应该传入两个参数：当前操作的数组与代表判断标准的函数。",
+        "code": "let arr = [5, -9, -8, 3, 0, 4];"                                      
+    },
+    {
         "problemName": "测试题目 (test)",
         "variables": ["notExist"],
         "data": [],
