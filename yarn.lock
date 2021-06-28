@@ -2,17 +2,78 @@
 # yarn lockfile v1
 
 
+async-validator@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npm.taobao.org/async-validator/download/async-validator-3.3.0.tgz#1d92193bbe60d6d6c8b246692c7005e9ed14a8ee"
+  integrity sha1-HZIZO75g1tbIskZpLHAF6e0UqO4=
+
+batch-processor@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/batch-processor/download/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+  integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
+
 bootstrap@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npm.taobao.org/bootstrap/download/bootstrap-4.5.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbootstrap%2Fdownload%2Fbootstrap-4.5.0.tgz#97d9dbcb5a8972f8722c9962483543b907d9b9ec"
   integrity sha1-l9nby1qJcvhyLJliSDVDuQfZuew=
+
+deepmerge@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/deepmerge/download/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
+  integrity sha1-XT/yKgHAD2RUBaL7wX0HeKGAEXA=
+
+element-resize-detector@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.npm.taobao.org/element-resize-detector/download/element-resize-detector-1.2.1.tgz#b0305194447a4863155e58f13323a0aef30851d1"
+  integrity sha1-sDBRlER6SGMVXljxMyOgrvMIUdE=
+  dependencies:
+    batch-processor "1.0.0"
 
 jquery@^3.5.1:
   version "3.5.1"
   resolved "https://registry.npm.taobao.org/jquery/download/jquery-3.5.1.tgz?cache=0&sync_timestamp=1588633811418&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjquery%2Fdownload%2Fjquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
   integrity sha1-17TQjhv9uGrS8aPQOeoXMEcXq7U=
 
-popper.js@^1.16.1:
+js-calendar@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.npm.taobao.org/js-calendar/download/js-calendar-1.2.3.tgz#a583b0644b4e695ba394f344d103dbcc7a7a7d3e"
+  integrity sha1-pYOwZEtOaVujlPNE0QPbzHp6fT4=
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npm.taobao.org/lodash.throttle/download/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
+
+popper.js@^1.14.6, popper.js@^1.16.1:
   version "1.16.1"
   resolved "https://registry.npm.taobao.org/popper.js/download/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
   integrity sha1-KiI8s9x7YhPXQOQDcr5A3kPmWxs=
+
+tinycolor2@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.npm.taobao.org/tinycolor2/download/tinycolor2-1.4.1.tgz#f4fad333447bc0b07d4dc8e9209d8f39a8ac77e8"
+  integrity sha1-9PrTM0R7wLB9TcjpIJ2POaisd+g=
+
+v-click-outside-x@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.npm.taobao.org/v-click-outside-x/download/v-click-outside-x-3.7.1.tgz#aa03eaa0e41e44cb5207dcf86c2d9f0dd64084c1"
+  integrity sha1-qgPqoOQeRMtSB9z4bC2fDdZAhME=
+
+view-design@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.npm.taobao.org/view-design/download/view-design-4.3.1.tgz#b0f9df9da1aa37f446e5a0f6241e5e94530de460"
+  integrity sha1-sPnfnaGqN/RG5aD2JB5elFMN5GA=
+  dependencies:
+    async-validator "^3.3.0"
+    deepmerge "^2.2.1"
+    element-resize-detector "^1.2.0"
+    js-calendar "^1.2.3"
+    lodash.throttle "^4.1.1"
+    popper.js "^1.14.6"
+    tinycolor2 "^1.4.1"
+    v-click-outside-x "^3.7.1"
+
+vue@^2.6.11:
+  version "2.6.11"
+  resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz?cache=0&sync_timestamp=1594226819006&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
+  integrity sha1-dllNh31LEiNEBuhONSdcbVFBJcU=
