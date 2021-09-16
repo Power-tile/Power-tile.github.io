@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SFX</title>
+    <meta charset="utf-8">
+    <script src="../../asset/code/includes/vue.global.js"></script>
+    <link rel="stylesheet" href="../../asset/code/includes/bootstrap.min.css">
+    <script src="../../asset/code/includes/bootstrap.bundle.min.js"></script>
+    <script src="../../asset/code/includes/howler.min.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container h-100">
+      <div class="row">
+        <div class="col-6">
+          <ul>
+            <li v-for="(music, i) in info" :key="i" :class="(i == audioIndex) ? 'text-danger' : 'text-body'">
+              {{ music.name }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li v-for="(ctrl, i) in controls" :key="i" :class="(i == controlIndex) ? 'text-success' : 'text-body'" style="cursor: pointer" @click="directStop(); controlIndex = i">
+              {{ ctrl.name }} {{ (i == controlIndex) ? '<-' : '' }}
+            </li>
+          </ul>
+          <button class="btn btn-light" @click="nextEvent()">Next</button>
+        </div>
+      </div>
+    </div>
+    <script src="./mid-autumn-sfx.js"></script>
+  </body>
+</html>
