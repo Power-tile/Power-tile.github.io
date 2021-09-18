@@ -22,12 +22,12 @@ Vue.createApp({
         {
           name: '伝えたい気持ち - 松谷卓.mp3',
           start: 0.5,
-          volume: 0.4,
+          volume: 0.7,
         },
         {
           name: '春节序曲 - 中国国家交响乐团.mp3',
           start: 0.5,
-          volume: 0.25
+          volume: 0.30
         },
         {
           name: 'beep.mp3',
