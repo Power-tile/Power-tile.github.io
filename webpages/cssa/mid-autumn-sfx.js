@@ -79,6 +79,10 @@ Vue.createApp({
           func: () => { this.directStop(); this.playAudio(5); }
         },
         {
+          name: "enter-dorm",
+          func: () => { this.playAudio(0); }
+        },
+        {
           name: "emo",
           func: () => { this.playAudio(3); }
         },
