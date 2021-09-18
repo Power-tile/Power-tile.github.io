@@ -12,7 +12,7 @@ Vue.createApp({
         {
           name: "alarm-final.mp3",
           start: 0,
-          volume: 0.9
+          volume: 0.8
         },
         {
           name: 'western-coast-unedited.mp3',
@@ -27,7 +27,7 @@ Vue.createApp({
         {
           name: '春节序曲 - 中国国家交响乐团.mp3',
           start: 0.5,
-          volume: 0.3
+          volume: 0.25
         },
         {
           name: 'beep.mp3',
@@ -56,7 +56,7 @@ Vue.createApp({
         },
         {
           name: "fade-siren",
-          func: () => { this.lowerVolume(0.4, 1); }
+          func: () => { this.lowerVolume(0.5, 1); }
         },
         {
           name: "mute-siren",
